@@ -32,8 +32,8 @@ Es una de las funciones esenciales del SNA. Este proceso permite que el cuerpo m
 
 En el contexto del SNA, se habla de actividad tónica y actividad fásica. La actividad tónica es la acción basal constante que el SNA mantiene para regular funciones esenciales del cuerpo, como el tono muscular y la frecuencia cardíaca en reposo. La actividad fásica, en cambio, son las respuestas temporales y rápidas que ocurren en el SNA ante estímulos específicos, como un aumento de la frecuencia cardíaca en una situación de peligro.
 
-### Variabilidad de la Frecuencia Cardíaca (HVR)
-Que refleja la variabilidad en el tiempo entre los latidos del corazón (intervalo R-R). La HVR es un indicador de la capacidad de respuesta y adaptación del SNA: una HVR adecuada significa que el cuerpo tiene una buena capacidad de adaptación ante diferentes condiciones fisiológicas, ya que refleja un equilibrio dinámico entre la actividad simpática y parasimpática.
+### Variabilidad de la Frecuencia Cardíaca (HRV)
+Que refleja la variabilidad en el tiempo entre los latidos del corazón (intervalo R-R). La HRV es un indicador de la capacidad de respuesta y adaptación del SNA: una HRV adecuada significa que el cuerpo tiene una buena capacidad de adaptación ante diferentes condiciones fisiológicas, ya que refleja un equilibrio dinámico entre la actividad simpática y parasimpática.
 
 ### Neurotransmisores del SNA
 
@@ -41,6 +41,36 @@ El SNA regula sus funciones a través de neurotransmisores específicos, princip
 
 Esta coordinación entre las diferentes partes del SNA es esencial para mantener la funcionalidad óptima del organismo, permitiendo que se adapte de manera efectiva tanto a situaciones de estrés como a estados de reposo y recuperación.
 
+## Variabilidad de la Frecuencia Cardíaca (HRV)
+
+La **Variabilidad de la Frecuencia Cardíaca (HRV)** es una medida de la fluctuación en los intervalos de tiempo entre latidos consecutivos del corazón (intervalos R-R) y se considera un indicador clave de la salud y el equilibrio del **Sistema Nervioso Autónomo (SNA)**. A diferencia de la frecuencia cardíaca promedio, que solo mide el número de latidos por minuto, la HRV examina cómo varía el tiempo entre latidos individuales, proporcionando información valiosa sobre la capacidad de adaptación del cuerpo frente a diferentes condiciones internas y externas.
+
+La HVR refleja la influencia del sistema nervioso simpático y parasimpático sobre el corazón. En un organismo sano, el SNA es dinámico y responde de forma continua a cambios tanto internos como ambientales. Esta respuesta se manifiesta en el ajuste de los intervalos R-R en tiempo real, lo que se traduce en una mayor HRV, la cual está generalmente asociada a una buena salud y capacidad de recuperación.
+
+### Importancia de la HRV en la Salud Cardiovascular
+
+Una alta variabilidad de la frecuencia cardíaca se considera un signo positivo de la capacidad adaptativa del SNA. Un mayor HVR implica que el sistema nervioso parasimpático está activo y que el organismo puede manejar el estrés adecuadamente, además de adaptarse con facilidad a situaciones de reposo o esfuerzo. En cambio, una baja HRV se asocia frecuentemente con una actividad simpática excesiva o una baja actividad parasimpática, lo cual puede ser indicativo de un estado de estrés crónico, fatiga, o problemas cardiovasculares, entre otros.
+
+Una baja HRV se ha relacionado con diversas condiciones patológicas, como hipertensión, enfermedades cardíacas, estrés crónico y trastornos de ansiedad. Además, estudios muestran que una baja HRV puede ser un indicador temprano de riesgos cardiovasculares y mortalidad, ya que el corazón pierde flexibilidad para adaptarse a los cambios en el entorno y las demandas del organismo.
+
+### Componentes de la HRV
+
+El análisis de la HRV a menudo se realiza descomponiendo la señal de los intervalos R-R en diferentes componentes de frecuencia, ya que cada uno refleja diferentes aspectos de la regulación autónoma:
+- **Frecuencia Baja (LF)**: Este componente refleja tanto la actividad simpática como una influencia del sistema renina-angiotensina, e indica el control vascular general.
+- **Frecuencia Alta (HF)**: Representa principalmente la actividad parasimpática y se asocia con el tono vagal, que regula la relajación y recuperación del corazón en momentos de reposo.
+- **Relación LF/HF**: La relación entre estos dos componentes se utiliza como un índice de balance autonómico. Un valor alto en la relación LF/HF sugiere predominio simpático, mientras que un valor bajo sugiere predominio parasimpático.
+
+### Métodos de Análisis de la HRV
+
+Existen varias técnicas para analizar la HRV, que permiten obtener información detallada de cómo responde el SNA en distintas condiciones:
+- **Análisis en el dominio del tiempo**: Este método examina la variabilidad en los intervalos de tiempo entre los latidos, utilizando métricas como la desviación estándar de los intervalos R-R (SDNN) y el índice RMSSD, que mide la variabilidad a corto plazo y está altamente influenciado por la actividad parasimpática.
+- **Análisis en el dominio de la frecuencia**: Utiliza técnicas como la transformada de Fourier o la transformada wavelet para descomponer la señal en sus componentes de frecuencia, permitiendo observar los patrones LF y HF, que ofrecen una comprensión más profunda del balance autónomo.
+
+### Factores que Afectan la HRV
+
+La HVR es sensible a múltiples factores externos e internos, como la edad, el nivel de condición física, el estado emocional, y el ciclo circadiano. En personas jóvenes y en buen estado físico, la HRV tiende a ser mayor debido a la flexibilidad autonómica. En cambio, en personas mayores o bajo estrés crónico, la HVR suele disminuir debido a un predominio simpático o a una reducción de la actividad parasimpática.
+
+Además, los estilos de vida y hábitos, como la alimentación, el sueño y el ejercicio, pueden influir en la HRV. El ejercicio regular, la meditación y el sueño de calidad tienden a mejorar la HVR, mientras que el estrés, el consumo excesivo de alcohol, y el insomnio tienden a reducirla, lo que afecta negativamente la regulación autónoma del corazón.
 
 
 ## Adquisición de la señal ECG
