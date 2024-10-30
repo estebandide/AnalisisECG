@@ -29,7 +29,11 @@ Inicialmente, se conectaron los electrodos en la posición indicada en la Figura
 *Figura 5: Circuito realizado para la adquisicón de la señal. Tomado de : Autoría propia*
 
 * Vídeo de la adquisición de la señal:
-https://github.com/user-attachments/assets/f08dcb8f-0673-4767-bba3-483fa98fad7b
+
+
+https://github.com/user-attachments/assets/a102acf0-6d91-4223-a113-5afae681d795
+
+
 
 
 
