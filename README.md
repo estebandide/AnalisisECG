@@ -27,9 +27,7 @@ Inicialmente, se conectaron los electrodos en la posición indicada en la Figura
 
 * Vídeo de la adquisición de la señal:
 
-<video width="400" height="300" controls>
-    <source src="https://github.com/estebandide/AnalisisECG/blob/main/WhatsApp%20Video%202024-10-30%20at%2017.18.18_a0c82d61.mp4" type="video/mp4">
-
+<video src= "https://github.com/estebandide/AnalisisECG/blob/main/WhatsApp%20Video%202024-10-30%20at%2017.18.18_a0c82d61.mp4" >
 
 [^1^]:Guía de colocación de electrodos. (s. f.). Neotecnia. https://neotecnia.mx/blogs/noticias/guia-de-colocacion-de-electrodos?srsltid=AfmBOopEYZV3x6zO5EtnVZ28WQZA4e1kedPIHHK8izv-80wiKwPuaQQI
 [^2^]:National Instruments. (s/f). Multifunction Input and Output Devices. https://www.ni.com/pdf/product-flyers/multifunction-io.pdf
