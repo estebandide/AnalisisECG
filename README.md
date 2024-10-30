@@ -9,7 +9,7 @@ Este proyecto realiza un análisis detallado de una señal fisiológica (ECG) ob
 
 El Sistema Nervioso Autónomo (SNA) es una parte fundamental del sistema nervioso periférico responsable de controlar funciones involuntarias y automáticas del cuerpo, como el ritmo cardíaco, la presión arterial, la digestión y la respiración. Su principal función es regular estas actividades sin intervención consciente, asegurando que el cuerpo mantenga un equilibrio adecuado frente a diferentes estímulos y condiciones internas o externas.
 
-<img src="https://github.com/estebandide/AnalisisECG/blob/main/Sistema-Nervioso-autonomo-Neuroscenter.png"  width="600" height="500">
+<img src="https://github.com/estebandide/AnalisisECG/blob/main/Sistema-Nervioso-autonomo-Neuroscenter.png"  width="400" height="300">
 *Figura 1: Sistema nervioso autonomo. Tomado de : [^5^] 
 
 El SNA se divide en dos ramas principales que trabajan de manera complementaria para asegurar que el organismo responda y se adapte correctamente a sus necesidades:
@@ -25,6 +25,9 @@ Es responsable del estado de "descanso y digestión". Contrario al simpático, e
 ### Homeostasis
 
 Es una de las funciones esenciales del SNA. Este proceso permite que el cuerpo mantenga un estado de equilibrio interno, ajustando aspectos como la frecuencia cardíaca y la presión arterial para adaptarse a las demandas tanto internas como externas. La actividad coordinada entre el sistema simpático y el parasimpático es clave para la homeostasis, ya que permite que el organismo responda al estrés mientras conserva energía y se recupera en momentos de calma.
+
+<img src="https://github.com/estebandide/AnalisisECG/blob/main/Homeos.jpeg"  width="400" height="300">
+*Figura 3: Homeostasis en el SNA. Tomado de : [^6^]
 
 En el contexto del SNA, se habla de actividad tónica y actividad fásica. La actividad tónica es la acción basal constante que el SNA mantiene para regular funciones esenciales del cuerpo, como el tono muscular y la frecuencia cardíaca en reposo. La actividad fásica, en cambio, son las respuestas temporales y rápidas que ocurren en el SNA ante estímulos específicos, como un aumento de la frecuencia cardíaca en una situación de peligro.
 
@@ -111,3 +114,4 @@ tiempo = np.arange(len(data)) / fs # Generar el eje de tiempo
 [^3^]:ELECTROCARDIOGRAFO ECG AD8232. (s/f). MACTRONICA. https://www.mactronica.com.co/electrocardiografo-ecg-ad8232
 [^4^]: Md, A. (s. f.). 5 Lead Electrode Placement Electrocardiogram - RA, LA, RL, LL, V -. . . iStock. https://www.istockphoto.com/es/vector/5-electrocardiogramas-de-colocaci%C3%B3n-de-electrodos-de-plomo-ra-la-rl-ll-v-posici%C3%B3n-gm1586070345-529063354
 [^5^]: Neurosce. (2023, 16 junio). ▷ El sistema nervioso autónomo. Neuroscenter. https://neuroscenter.com/blog/sistema-nervioso-autonomo/
+[^6^]: DASHBOARD IV. (2023, 7 septiembre). Genially. https://view.genially.com/64f8112ad70759001171057a/interactive-content-dashboard-iv
