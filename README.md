@@ -10,23 +10,23 @@ Para la captura de la señal ECG, se seleccionó un sujeto de manera anónima, q
 
 <img src="https://github.com/lavaltt/Analisis_de_senales_EMG/blob/main/daq.jpg?raw=true"  width="400" height="300">
 
-*Figura 1: Data Acquisition System. Tomado de : [^2^]*
+*Figura 2: Data Acquisition System. Tomado de : [^2^]*
 
 Adicionalmente, se utilizó un módulo AD8232, un sensor diseñado para medir la actividad cardíaca. Este módulo se destaca por su precisión en la captura de señales cardíacas, ya que su proceso de amplificación y filtrado resulta óptimo para este tipo de señal. Además, permite una fácil lectura de la señal por parte de la tarjeta DAQ, facilitando la adquisición y procesamiento de la actividad eléctrica del corazón.
 
 <img src="https://github.com/lavaltt/Analisis_de_senales_EMG/blob/main/modulo.jpg?raw=true"  width="400" height="300">
 
-*Figura 2: Modulo de adquisición y amplificación AD8832. Tomado de : [^3^]*
+*Figura 3: Modulo de adquisición y amplificación AD8832. Tomado de : [^3^]*
 
 Inicialmente, se conectaron los electrodos en la posición indicada en la Figura 3 a un sujeto de prueba y se procedió a registrar la señal ECG en reposo y durante una actividad física controlada. Los electrodos, conectados al módulo AD8232, enviaban la señal cardíaca para su amplificación. Una vez amplificada, la señal se transmitía a la tarjeta DAQ, que realizó el muestreo a una frecuencia de 250 Hz y entregó los valores digitalizados para su almacenamiento y análisis posterior en Python. Para el monitoreo en tiempo real, se utilizó LabVIEW, permitiendo observar la señal sin necesidad de un osciloscopio, garantizando así que no hubiera cambios significativos en la señal registrada frente a la visualizada en el software.
 
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/ELECTRODOS.jpg"  width="400" height="300">
 
-*Figura 3: Ubicacion de los electrodos para adquirir la señal. Tomado de : Tomado de : [^4^]*
+*Figura 4: Ubicacion de los electrodos para adquirir la señal. Tomado de : Tomado de : [^4^]*
 
 <img src="https://github.com/lavaltt/Analisis_de_senales_EMG/blob/main/circuito.jpg?raw=true"  width="400" height="300">
 
-*Figura 4: Circuito realizado para la adquisicón de la señal. Tomado de : Autoría propia*
+*Figura 5: Circuito realizado para la adquisicón de la señal. Tomado de : Autoría propia*
 
 * Vídeo de la adquisición de la señal:
 https://github.com/user-attachments/assets/f08dcb8f-0673-4767-bba3-483fa98fad7b
