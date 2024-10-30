@@ -33,8 +33,41 @@ Inicialmente, se conectaron los electrodos en la posición indicada en la Figura
 
 https://github.com/user-attachments/assets/a102acf0-6d91-4223-a113-5afae681d795
 
+### DAQ y Python 
+La DAQ fue enlazada por medio de código a python, de manera que pudiera visualizarse la captura de la señal en tiempo real y los datos fueran guardados en cualquier formato deseado. El código configura los parametros y la tarea de adquisicion, a su vez que estructura la graficación en vivo de la señal adquirida. (Código adjunto en el proyecto).
 
+Muestra del código para la gráfica:
+```python
+# Graficar la señal
+plt.figure(figsize=(50, 10))
+plt.plot(tiempo, data, color='red')
+plt.title("Señal ECG")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Amplitud (V)")
+plt.grid()
+plt.show()
+```
+## Carga de datos
+Los datos adquiridos gracias a la DAQ y python, fueron guardados en un archivo tipo .csv para su correcto análisis y desarrollo. Inicialmente, para cargar los datos en este formato se utilizó la libreria pandas y se graficaron los adtos para observar la señal EMG obtenida. 
 
+```python
+#Lectura y carga de datos 
+with open(r'C:\Users\valen\OneDrive\Desktop\Ingenieria Biomedica\VI semestre\Procesamiento digital de señales\Laboratorio de señales\Lab4a\Lab4\datosECG4.csv', 'r', encoding='utf-8') as file:
+    lines = file.readlines()
+#reemplazando comas por puntos
+data = []
+for line in lines:
+    line = line.strip().replace(',', '.')  # Elimina espacios y reemplaza comas
+    try:
+        value = float(line)
+        data.append(value)
+    except ValueError:
+        continue
+data = np.array(data)
+fs = 250  
+print(data[:5]) # verificar los datos
+tiempo = np.arange(len(data)) / fs # Generar el eje de tiempo
+```
 
 
 
