@@ -5,35 +5,26 @@ Este proyecto realiza un análisis detallado de una señal fisiológica (ECG) ob
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/Gr%C3%A1fico%20Diagrama%20de%20Flujo%20Din%C3%A1mico%20Celeste.png"  width="600" height="500">
 *Figura 1: Diagrama de flujo. Tomado de : Autoria propia 
 
-## Sistema Nervioso Autónomo (SNA)
+# Sistema Nervioso Autónomo (SNA)
 
-El **Sistema Nervioso Autónomo (SNA)** regula funciones involuntarias del cuerpo, como el ritmo cardíaco, la digestión y la respiración, y responde automáticamente a las necesidades del organismo. A continuación, se presentan las principales definiciones relacionadas con el SNA:
+El Sistema Nervioso Autónomo (SNA) es una parte fundamental del sistema nervioso periférico responsable de controlar funciones involuntarias y automáticas del cuerpo, como el ritmo cardíaco, la presión arterial, la digestión y la respiración. Su principal función es regular estas actividades sin intervención consciente, asegurando que el cuerpo mantenga un equilibrio adecuado frente a diferentes estímulos y condiciones internas o externas.
 
-### 1. Sistema Nervioso Autónomo (SNA)
-Es una división del sistema nervioso periférico que regula funciones involuntarias. Opera sin intervención consciente y responde automáticamente a los cambios en el entorno y a las necesidades del organismo.
+El SNA se divide en dos ramas principales que trabajan de manera complementaria para asegurar que el organismo responda y se adapte correctamente a sus necesidades:
 
-### 2. División del SNA
-El SNA se divide en dos ramas principales:
-- **Sistema Nervioso Simpático**: Activa el "modo de lucha o huida" en situaciones de estrés. Aumenta la frecuencia cardíaca, dilata las vías respiratorias y dirige el flujo sanguíneo hacia los músculos.
-- **Sistema Nervioso Parasimpático**: Activa el "modo de descanso y digestión". Disminuye la frecuencia cardíaca, favorece la digestión y ayuda al organismo a conservar energía y restablecer el equilibrio.
+- **Sistema Nervioso Simpático**: Esta rama del SNA se activa en situaciones de estrés, peligro o alta demanda energética. Popularmente conocido como el sistema de "lucha o huida", prepara al cuerpo para reaccionar ante situaciones de emergencia aumentando la frecuencia cardíaca, dilatando las vías respiratorias y redirigiendo el flujo sanguíneo hacia los músculos. Estos cambios ayudan a preparar al cuerpo para una respuesta rápida y efectiva.
 
-### 3. Homeostasis
-Es el proceso por el cual el SNA mantiene el equilibrio interno del organismo, ajustando funciones como la frecuencia cardíaca y la presión arterial. La coordinación entre el sistema simpático y parasimpático permite que el cuerpo se adapte tanto a situaciones de estrés como a estados de reposo.
+- **Sistema Nervioso Parasimpático**: Es responsable del estado de "descanso y digestión". Contrario al simpático, el sistema parasimpático reduce la frecuencia cardíaca, facilita la digestión y promueve procesos de recuperación y conservación de energía en el cuerpo. Esta actividad es crucial para restaurar el equilibrio después de que el organismo ha respondido a una situación de estrés o alta actividad.
 
-### 4. Actividad Tónica y Fásica
-- **Actividad Tónica**: La actividad basal del SNA que regula funciones esenciales, como el tono vascular y la frecuencia cardíaca en reposo.
-- **Actividad Fásica**: Respuestas temporales y rápidas del SNA, como el aumento de la frecuencia cardíaca en situaciones de peligro.
+La homeostasis es una de las funciones esenciales del SNA. Este proceso permite que el cuerpo mantenga un estado de equilibrio interno, ajustando aspectos como la frecuencia cardíaca y la presión arterial para adaptarse a las demandas tanto internas como externas. La actividad coordinada entre el sistema simpático y el parasimpático es clave para la homeostasis, ya que permite que el organismo responda al estrés mientras conserva energía y se recupera en momentos de calma.
 
-### 5. Variabilidad de la Frecuencia Cardíaca (HVR)
-La HVR es la variabilidad en el tiempo entre latidos del corazón (intervalo R-R) y está regulada por el SNA. Es un indicador de la salud del SNA y su capacidad de respuesta; una HVR adecuada refleja una capacidad de adaptación óptima ante diferentes condiciones.
+En el contexto del SNA, se habla de actividad tónica y actividad fásica. La actividad tónica es la acción basal constante que el SNA mantiene para regular funciones esenciales del cuerpo, como el tono muscular y la frecuencia cardíaca en reposo. La actividad fásica, en cambio, son las respuestas temporales y rápidas que ocurren en el SNA ante estímulos específicos, como un aumento de la frecuencia cardíaca en una situación de peligro.
 
-### 6. Neurotransmisores del SNA
-- **Norepinefrina (Noradrenalina)**: Principal neurotransmisor del sistema simpático, que estimula el aumento de la frecuencia cardíaca y la presión arterial.
-- **Acetilcolina**: Neurotransmisor del sistema parasimpático, que reduce la frecuencia cardíaca y favorece la relajación.
+Otro concepto importante es la Variabilidad de la Frecuencia Cardíaca (HVR), que refleja la variabilidad en el tiempo entre los latidos del corazón (intervalo R-R). La HVR es un indicador de la capacidad de respuesta y adaptación del SNA: una HVR adecuada significa que el cuerpo tiene una buena capacidad de adaptación ante diferentes condiciones fisiológicas, ya que refleja un equilibrio dinámico entre la actividad simpática y parasimpática.
 
----
+El SNA regula sus funciones a través de neurotransmisores específicos, principalmente norepinefrina (noradrenalina) y acetilcolina. La norepinefrina es el principal neurotransmisor del sistema simpático y su liberación resulta en un aumento de la frecuencia cardíaca y la presión arterial, preparando al cuerpo para una respuesta activa. La acetilcolina, liberada por el sistema parasimpático, tiene el efecto opuesto: disminuye la frecuencia cardíaca y promueve la relajación, ayudando al organismo a conservar energía.
 
-Estas definiciones son fundamentales para comprender cómo el SNA regula el cuerpo y cómo el equilibrio entre las dos ramas del sistema mantiene las funciones fisiológicas esenciales.
+Esta coordinación entre las diferentes partes del SNA es esencial para mantener la funcionalidad óptima del organismo, permitiendo que se adapte de manera efectiva tanto a situaciones de estrés como a estados de reposo y recuperación.
+
 
 
 ## Adquisición de la señal ECG
