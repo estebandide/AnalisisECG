@@ -5,6 +5,37 @@ Este proyecto realiza un análisis detallado de una señal fisiológica (ECG) ob
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/Gr%C3%A1fico%20Diagrama%20de%20Flujo%20Din%C3%A1mico%20Celeste.png"  width="600" height="500">
 *Figura 1: Diagrama de flujo. Tomado de : Autoria propia 
 
+## Sistema Nervioso Autónomo (SNA)
+
+El **Sistema Nervioso Autónomo (SNA)** regula funciones involuntarias del cuerpo, como el ritmo cardíaco, la digestión y la respiración, y responde automáticamente a las necesidades del organismo. A continuación, se presentan las principales definiciones relacionadas con el SNA:
+
+### 1. Sistema Nervioso Autónomo (SNA)
+Es una división del sistema nervioso periférico que regula funciones involuntarias. Opera sin intervención consciente y responde automáticamente a los cambios en el entorno y a las necesidades del organismo.
+
+### 2. División del SNA
+El SNA se divide en dos ramas principales:
+- **Sistema Nervioso Simpático**: Activa el "modo de lucha o huida" en situaciones de estrés. Aumenta la frecuencia cardíaca, dilata las vías respiratorias y dirige el flujo sanguíneo hacia los músculos.
+- **Sistema Nervioso Parasimpático**: Activa el "modo de descanso y digestión". Disminuye la frecuencia cardíaca, favorece la digestión y ayuda al organismo a conservar energía y restablecer el equilibrio.
+
+### 3. Homeostasis
+Es el proceso por el cual el SNA mantiene el equilibrio interno del organismo, ajustando funciones como la frecuencia cardíaca y la presión arterial. La coordinación entre el sistema simpático y parasimpático permite que el cuerpo se adapte tanto a situaciones de estrés como a estados de reposo.
+
+### 4. Actividad Tónica y Fásica
+- **Actividad Tónica**: La actividad basal del SNA que regula funciones esenciales, como el tono vascular y la frecuencia cardíaca en reposo.
+- **Actividad Fásica**: Respuestas temporales y rápidas del SNA, como el aumento de la frecuencia cardíaca en situaciones de peligro.
+
+### 5. Variabilidad de la Frecuencia Cardíaca (HVR)
+La HVR es la variabilidad en el tiempo entre latidos del corazón (intervalo R-R) y está regulada por el SNA. Es un indicador de la salud del SNA y su capacidad de respuesta; una HVR adecuada refleja una capacidad de adaptación óptima ante diferentes condiciones.
+
+### 6. Neurotransmisores del SNA
+- **Norepinefrina (Noradrenalina)**: Principal neurotransmisor del sistema simpático, que estimula el aumento de la frecuencia cardíaca y la presión arterial.
+- **Acetilcolina**: Neurotransmisor del sistema parasimpático, que reduce la frecuencia cardíaca y favorece la relajación.
+
+---
+
+Estas definiciones son fundamentales para comprender cómo el SNA regula el cuerpo y cómo el equilibrio entre las dos ramas del sistema mantiene las funciones fisiológicas esenciales.
+
+
 ## Adquisición de la señal ECG
 Para la captura de la señal ECG, se seleccionó un sujeto de manera anónima, quien autorizó el uso de su señal bajo condiciones de confidencialidad. La adquisición de la señal se realizó mediante una tarjeta DAQ que es un dispositivo utilizado para medir señales físicas y convertirlas en datos digitales que puedan ser procesado, siguiendo una guía específica para la colocación de los electrodos. La ubicación de los electrodos se basó en las recomendaciones establecidas en [^1^], asegurando una correcta captación de la actividad eléctrica cardíaca. Se incluyó una explicación detallada en cada sección para clarificar los procedimientos técnicos y metodológicos empleados en cada etapa del proceso de adquisición.
 
