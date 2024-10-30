@@ -160,6 +160,9 @@ print(data[:5]) # verificar los datos
 tiempo = np.arange(len(data)) / fs # Generar el eje de tiempo
 ```
 
+<img src="https://github.com/estebandide/AnalisisECG/blob/main/crudo.jpg"  width="400" height="300">
+*Figura 5: Señal en crudo. Tomado de : Autoría propia*
+
 
 
 
