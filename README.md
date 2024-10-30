@@ -71,11 +71,9 @@ Además, los estilos de vida y hábitos, como la alimentación, el sueño y el e
 
 ## Transformada Wavelet
 
-La **Transformada Wavelet** es una técnica para descomponer una señal en el tiempo y la frecuencia, permitiendo analizar detalles a distintas escalas. A diferencia de la Transformada de Fourier, que solo ofrece información de la frecuencia, la Transformada Wavelet proporciona información sobre **cuándo** ocurren ciertos cambios en la frecuencia, siendo útil para señales no estacionarias como el ECG.
+La Transformada Wavelet es una técnica para descomponer una señal en el tiempo y la frecuencia, permitiendo analizar detalles a distintas escalas. A diferencia de la Transformada de Fourier, que solo ofrece información de la frecuencia, la Transformada Wavelet proporciona información sobre cuándo ocurren ciertos cambios en la frecuencia, siendo útil para señales no estacionarias como el ECG.
 
-### Principios Básicos
-
-La transformada wavelet utiliza funciones llamadas **wavelets** (ondículas) que se ajustan en **escala** (para analizar detalles finos o generales) y en **tiempo** (para analizar diferentes momentos de la señal). Este enfoque permite captar tanto eventos puntuales como tendencias.
+La transformada wavelet utiliza funciones llamadas wavelets (ondículas) que se ajustan en escala (para analizar detalles finos o generales) y en tiempo (para analizar diferentes momentos de la señal). Este enfoque permite captar tanto eventos puntuales como tendencias.
 
 ### Tipos de Wavelets
 
