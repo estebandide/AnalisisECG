@@ -32,9 +32,6 @@ Es una de las funciones esenciales del SNA. Este proceso permite que el cuerpo m
 
 En el contexto del SNA, se habla de actividad tónica y actividad fásica. La actividad tónica es la acción basal constante que el SNA mantiene para regular funciones esenciales del cuerpo, como el tono muscular y la frecuencia cardíaca en reposo. La actividad fásica, en cambio, son las respuestas temporales y rápidas que ocurren en el SNA ante estímulos específicos, como un aumento de la frecuencia cardíaca en una situación de peligro.
 
-### Variabilidad de la Frecuencia Cardíaca (HRV)
-Que refleja la variabilidad en el tiempo entre los latidos del corazón (intervalo R-R). La HRV es un indicador de la capacidad de respuesta y adaptación del SNA: una HRV adecuada significa que el cuerpo tiene una buena capacidad de adaptación ante diferentes condiciones fisiológicas, ya que refleja un equilibrio dinámico entre la actividad simpática y parasimpática.
-
 ### Neurotransmisores del SNA
 
 El SNA regula sus funciones a través de neurotransmisores específicos, principalmente norepinefrina (noradrenalina) y acetilcolina. La norepinefrina es el principal neurotransmisor del sistema simpático y su liberación resulta en un aumento de la frecuencia cardíaca y la presión arterial, preparando al cuerpo para una respuesta activa. La acetilcolina, liberada por el sistema parasimpático, tiene el efecto opuesto: disminuye la frecuencia cardíaca y promueve la relajación, ayudando al organismo a conservar energía.
@@ -71,6 +68,34 @@ Existen varias técnicas para analizar la HRV, que permiten obtener información
 La HVR es sensible a múltiples factores externos e internos, como la edad, el nivel de condición física, el estado emocional, y el ciclo circadiano. En personas jóvenes y en buen estado físico, la HRV tiende a ser mayor debido a la flexibilidad autonómica. En cambio, en personas mayores o bajo estrés crónico, la HVR suele disminuir debido a un predominio simpático o a una reducción de la actividad parasimpática.
 
 Además, los estilos de vida y hábitos, como la alimentación, el sueño y el ejercicio, pueden influir en la HRV. El ejercicio regular, la meditación y el sueño de calidad tienden a mejorar la HVR, mientras que el estrés, el consumo excesivo de alcohol, y el insomnio tienden a reducirla, lo que afecta negativamente la regulación autónoma del corazón.
+
+## Transformada Wavelet
+
+La **Transformada Wavelet** es una técnica para descomponer una señal en el tiempo y la frecuencia, permitiendo analizar detalles a distintas escalas. A diferencia de la Transformada de Fourier, que solo ofrece información de la frecuencia, la Transformada Wavelet proporciona información sobre **cuándo** ocurren ciertos cambios en la frecuencia, siendo útil para señales no estacionarias como el ECG.
+
+### Principios Básicos
+
+La transformada wavelet utiliza funciones llamadas **wavelets** (ondículas) que se ajustan en **escala** (para analizar detalles finos o generales) y en **tiempo** (para analizar diferentes momentos de la señal). Este enfoque permite captar tanto eventos puntuales como tendencias.
+
+### Tipos de Wavelets
+
+Existen diferentes wavelets que se eligen según el tipo de señal y el análisis requerido:
+- **Haar**: Simple y detecta cambios bruscos.
+- **Daubechies**: Útil para señales complejas, como ECG.
+- **Morlet**: Ideal para señales oscilatorias.
+
+### Análisis Multi-Resolución
+
+La Transformada Wavelet permite descomponer una señal en distintos niveles de detalle:
+- **Frecuencia baja**: Refleja las tendencias generales.
+- **Frecuencia alta**: Muestra detalles finos o picos, útiles para detectar eventos específicos.
+
+### Aplicaciones
+
+La Transformada Wavelet se usa en:
+- **Procesamiento de señales fisiológicas**: Para detectar eventos en ECG, EEG, etc.
+- **Compresión de datos**: Reduce el tamaño de archivos manteniendo calidad.
+- **Análisis de series temporales**: Identificación de eventos en datos financieros o de monitoreo.
 
 
 ## Adquisición de la señal ECG
