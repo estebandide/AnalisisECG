@@ -220,76 +220,57 @@ Para el análisis de la señal, se emplearon filtros específicos que permiten m
 
 # Diseño de Filtro Pasa Banda
 
-## Diseñar un filtro pasa banda con:
-
-- Atenuación de -3 dB en 👦\Omega_0 = 50 \pm 5👦 Hz, 👦100 \pm 4👦 Hz.
-- 👦f_1 = 0.05👦 Hz
-- 👦f_2 = 250👦 Hz
-- 👦f_c = 5👦 Hz
-- 👦f_u = 250👦 Hz
+filtro_pasa_banda = """
+Diseñar un filtro pasa banda con:
+- Atenuación de -3 dB de atenuación en Ω0 = 50 ± 5 Hz, 100 ± 4 Hz.
+- f1 = 0.05 Hz
+- f2 = 250 Hz
+- fc = 5 Hz
+- fu = 250 Hz
 
 Con:
-\[
--20 \, \text{dB en } \, 0.15 \, \Omega_0, 0.25 \, \Omega_0
-\]
+-20 dB en 0.15 Ω0, 0.25 Ω0
+"""
 
-## Conversiones
+# Conversiones
+conversiones = """
+Ω1 = 2 * π * 0.5 Hz = 3.1415 rad/s
+Ω2 = 2 * π * 250 Hz = 1570.79 rad/s
+Ωc = 2 * π * 5 Hz = 31.41 rad/s
+Ωu = 2 * π * 100 Hz = 628.318 rad/s
+"""
 
-\[
-\Omega_1 = 2 \pi \cdot 0.5 \, \text{Hz} = 3.1415 \, \text{rad/s}
-\]
-\[
-\Omega_2 = 2 \pi \cdot 250 \, \text{Hz} = 1570.79 \, \text{rad/s}
-\]
-\[
-\Omega_c = 2 \pi \cdot 5 \, \text{Hz} = 31.41 \, \text{rad/s}
-\]
-\[
-\Omega_u = 2 \pi \cdot 100 \, \text{Hz} = 628.318 \, \text{rad/s}
-\]
+# Cálculo de n y Q
+calculo_n_y_q = """
+Cálculo de n:
 
-## Cálculo de 👦Q👦 y 👦n👦
+n = log10(1 / sqrt(2)) / log10(Ω1 / Ω2) = 1.91
 
-\[
-n = \frac{\log_{10} \frac{1}{\sqrt{2}}}{\log_{10} \left(\frac{\Omega_1}{\Omega_2}\right)} = 1.91
-\]
-\[
-\alpha = \frac{1}{Q} \quad \text{donde} \quad Q = \frac{\Omega_0}{\Delta \Omega}
-\]
-\[
-\Delta \Omega = \Omega_2 - \Omega_1
-\]
-\[
-\Omega_0 = \sqrt{\Omega_1 \cdot \Omega_2} = \sqrt{3.1415 \cdot 1570.79} = 70.35
-\]
-\[
-\alpha = \frac{\Omega_0}{\Delta \Omega} = \frac{70.35}{1570.79 - 3.1415} = 0.045
-\]
+Otro cálculo de n:
 
-## Gráficos de Respuesta
+n = log10(1 / sqrt(2)) / log10(2.610 / 10) = 1.861
+"""
 
-| 👦\Omega👦 | Magnitud (dB) |
-|------------|---------------|
-| 👦\Omega_1👦 | -3 |
-| 👦\Omega_0👦 | 0 |
-| 👦\Omega_2👦 | -3 |
+# Valor de alpha
+valor_alpha = """
+Cálculo de α:
 
-![Gráfico de Bode](bode_plot_example.png)
+α = Ω0 / ΔΩ = 2.610
+"""
 
-## Filtro Pasa Bajo Normalizado con 👦\alpha = 2.610 \, \text{rad/s}👦
+# Filtro pasa bajo normalizado
+filtro_pasa_bajo = """
+Diseño de un filtro pasa bajo normalizado con α = 2.610 rad/s:
 
-\[
-n = \frac{\log_{10} \left(\frac{1}{0.707}\right)}{\log_{10} \left(\frac{1}{2.610}\right)} = 1.861
-\]
-\[
-\Omega_1 = 2.610, \quad \Omega_2 = 2.610
-\]
+n = log10(1 / 0.707) / log10(1 / 2.610)
+"""
 
-| 👦\Omega👦 | Magnitud (dB) |
-|------------|---------------|
-| 👦\Omega_1👦 | -3 |
-| 👦\Omega_0👦 | 0 |
-| 👦\Omega_2👦 | -3 |
+# Imprimir los resultados formateados
+print(filtro_pasa_banda)
+print(conversiones)
+print(calculo_n_y_q)
+print(valor_alpha)
+print(filtro_pasa_bajo)
 
 ##### Pasa Banda
 Este tipo de filtro se diseñó para permitir el paso de frecuencias en un rango específico (5 Hz a 100 Hz en este caso) y atenuar las frecuencias que quedan fuera de este rango. La elección de un filtro pasa banda es crucial en el análisis de señales biológicas, como el ECG, ya que se busca eliminar ruidos y artefactos fuera del rango de interés. Esto es especialmente relevante en el contexto de la actividad cardíaca, donde las frecuencias de interés se encuentran generalmente en un rango específico.
