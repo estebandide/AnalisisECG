@@ -14,7 +14,9 @@ Este proyecto realiza un análisis detallado de una señal fisiológica (ECG) ob
 El Sistema Nervioso Autónomo (SNA) es una parte fundamental del sistema nervioso periférico responsable de controlar funciones involuntarias y automáticas del cuerpo, como el ritmo cardíaco, la presión arterial, la digestión y la respiración. Su principal función es regular estas actividades sin intervención consciente, asegurando que el cuerpo mantenga un equilibrio adecuado frente a diferentes estímulos y condiciones internas o externas.
 
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/Sistema-Nervioso-autonomo-Neuroscenter.png"  width="400" height="300">
-*Figura 2: Sistema nervioso autonomo. Tomado de : [^5^]*
+
+*Figura 2: Sistema nervioso autonomo. Tomado de:[^5^]*
+
 
 El SNA se divide en dos ramas principales que trabajan de manera complementaria para asegurar que el organismo responda y se adapte correctamente a sus necesidades:
 
@@ -31,7 +33,9 @@ Es responsable del estado de "descanso y digestión". Contrario al simpático, e
 Es una de las funciones esenciales del SNA. Este proceso permite que el cuerpo mantenga un estado de equilibrio interno, ajustando aspectos como la frecuencia cardíaca y la presión arterial para adaptarse a las demandas tanto internas como externas. La actividad coordinada entre el sistema simpático y el parasimpático es clave para la homeostasis, ya que permite que el organismo responda al estrés mientras conserva energía y se recupera en momentos de calma.
 
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/Homeos.jpeg"  width="400" height="300">
-*Figura 3: Homeostasis en el SNA. Tomado de : [^6^]*
+
+*Figura 3: Homeostasis en el SNA. Tomado de :[^6^]*
+
 
 En el contexto del SNA, se habla de actividad tónica y actividad fásica. La actividad tónica es la acción basal constante que el SNA mantiene para regular funciones esenciales del cuerpo, como el tono muscular y la frecuencia cardíaca en reposo. La actividad fásica, en cambio, son las respuestas temporales y rápidas que ocurren en el SNA ante estímulos específicos, como un aumento de la frecuencia cardíaca en una situación de peligro.
 
@@ -104,7 +108,7 @@ Para la captura de la señal ECG, se seleccionó un sujeto de manera anónima, q
 
 <img src="https://github.com/lavaltt/Analisis_de_senales_EMG/blob/main/daq.jpg?raw=true"  width="400" height="300">
 
-*Figura 2: Data Acquisition System. Tomado de : [^2^]*
+*Figura 4: Data Acquisition System. Tomado de : [^2^]*
 
 
 ### LabVIEW para Adquisición de Datos
@@ -138,7 +142,7 @@ Finalmente, el bloque que se conecta a una ruta de archivo específica guarda lo
 
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/LABVIEW.jpg"  width="600" height="500">
 
-*Figura 1: Esquema LabVIEW. Tomado de autoria propia*
+*Figura 5: Esquema LabVIEW. Tomado de autoria propia*
 
 
 
@@ -146,17 +150,17 @@ Adicionalmente, se utilizó un módulo AD8232, un sensor diseñado para medir la
 
 <img src="https://github.com/lavaltt/Analisis_de_senales_EMG/blob/main/modulo.jpg?raw=true"  width="400" height="300">
 
-*Figura 3: Modulo de adquisición y amplificación AD8832. Tomado de : [^3^]*
+*Figura 6: Modulo de adquisición y amplificación AD8832. Tomado de : [^3^]*
 
 Inicialmente, se conectaron los electrodos en la posición indicada en la Figura 3 a un sujeto de prueba y se procedió a registrar la señal ECG en reposo y durante una actividad física controlada. Los electrodos, conectados al módulo AD8232, enviaban la señal cardíaca para su amplificación. Una vez amplificada, la señal se transmitía a la tarjeta DAQ, que realizó el muestreo a una frecuencia de 250 Hz y entregó los valores digitalizados para su almacenamiento y análisis posterior en Python. Para el monitoreo en tiempo real, se utilizó LabVIEW, permitiendo observar la señal sin necesidad de un osciloscopio, garantizando así que no hubiera cambios significativos en la señal registrada frente a la visualizada en el software.
 
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/ELECTRODOS.jpg"  width="400" height="300">
 
-*Figura 4: Ubicacion de los electrodos para adquirir la señal. Tomado de : Tomado de : [^4^]*
+*Figura 7: Ubicacion de los electrodos para adquirir la señal. Tomado de : Tomado de : [^4^]*
 
 <img src="https://github.com/lavaltt/Analisis_de_senales_EMG/blob/main/circuito.jpg?raw=true"  width="400" height="300">
 
-*Figura 5: Circuito realizado para la adquisicón de la señal. Tomado de : Autoría propia*
+*Figura 8: Circuito realizado para la adquisicón de la señal. Tomado de : Autoría propia*
 
 * Vídeo de la adquisición de la señal:
 
@@ -205,7 +209,8 @@ tiempo = np.arange(len(data)) / fs # Generar el eje de tiempo
 Este código abre y carga datos de un archivo CSV (datosECG4.csv) que contiene valores de una señal ECG, reemplazando comas por puntos para convertir las lecturas a formato numérico. Tras leer las líneas y limpiar los valores, se almacenan en la lista data, omitiendo cualquier línea que no sea numérica. Luego, data se convierte a un arreglo de NumPy y se define la frecuencia de muestreo (fs = 250 Hz). Finalmente, se crea un eje de tiempo tiempo para la señal, que permitirá representar la señal ECG en función del tiempo.
 
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/crudo.jpg"  width="900" height="300">
-*Figura 5: Señal en crudo. Tomado de : Autoría propia*
+
+*Figura 9: Señal en crudo. Tomado de :Autoría propia*
 
 ## Análisis de la Señal Cruda
 
@@ -362,7 +367,8 @@ La implementación de este filtro rechaza banda aporta múltiples beneficios:
 La variabilidad de la frecuencia cardíaca (HRV) es una medida de las variaciones en el intervalo de tiempo entre latidos consecutivos del corazón (intervalos R-R). Es un indicador importante de la actividad del sistema nervioso autónomo (SNA), que regula funciones automáticas del cuerpo, y se utiliza comúnmente en el análisis de la salud cardíaca y el estrés. Una mayor HRV generalmente indica una buena adaptación del sistema cardiovascular y una alta resiliencia, mientras que una HRV baja puede estar asociada con estrés.
 
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/HRV.jpg"  width="900" height="300">
-*Figura 5: Señal medicion de los R-R. Tomado de : Autoría propia*
+
+*Figura 10: Señal medicion de los R-R. Tomado de : Autoría propia*
 
 ### Gráfica del ECG Filtrado con Picos R Detectados
 
@@ -408,7 +414,8 @@ tiempo_RR = np.cumsum(intervalos_RR)  # Tiempo acumulado de cada intervalo R-R
 Este fragmento de código calcula los intervalos R-R de una señal ECG al medir el tiempo entre picos consecutivos detectados. Para ello, usa np.diff en el arreglo peaks y divide por la frecuencia de muestreo fs, obteniendo así los intervalos en segundos. También cuenta el número de picos y de intervalos R-R para referencias adicionales, y utiliza np.cumsum para calcular el tiempo acumulado de cada intervalo, permitiendo analizar la evolución temporal de la frecuencia cardíaca.
 
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/ESTA.jpg"  width="900" height="300">
-*Figura 5: Señal estadisticos de los R-R. Tomado de : Autoría propia*
+
+*Figura 11: Señal estadisticos de los R-R. Tomado de : Autoría propia*
 
 ### Gráfica de Duración de los Intervalos R-R
 
@@ -464,7 +471,8 @@ Este código calcula estadísticas básicas (media, mediana y desviación están
 
 
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/ESTA.jpg"  width="500" height="400">
-*Figura 5: Espectograma transformada Wavelet. Tomado de : Autoría propia*
+
+*Figura 12: Espectograma transformada Wavelet. Tomado de : Autoría propia*
 
 ### Análisis del Espectrograma de la Variabilidad de la Frecuencia Cardíaca (HRV)
 
@@ -492,7 +500,8 @@ En el espectrograma, se observa una variación notable en la intensidad y amplit
 En la banda HF, relacionada con la respiración y el tono vagal (actividad parasimpática), se notan zonas de mayor intensidad en diferentes intervalos de tiempo. Sin embargo, estas variaciones tienden a ser menos intensas que en la banda LF. La amplitud en esta región representa el efecto del sistema nervioso parasimpático sobre el ritmo cardíaco. Un aumento en la potencia espectral en la banda HF podría estar relacionado con un estado de relajación o recuperación. Si la potencia en la banda HF es alta y estable, se podría inferir que el sistema nervioso parasimpático mantiene un tono constante, lo cual es común en individuos en reposo.
 
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/Morlet.png"  width="500" height="400">
-*Figura 5: Espectograma transformada Wavelet. Tomado de : Autoría propia*
+
+*Figura 13: Espectograma transformada Wavelet. Tomado de : [^7^]*
 
 ### Uso de la Transformada Morlet en el Análisis de ECG
 
@@ -582,3 +591,4 @@ La duración de los picos en ambas bandas es igualmente importante. Picos cortos
 [^4^]: Md, A. (s. f.). 5 Lead Electrode Placement Electrocardiogram - RA, LA, RL, LL, V -. . . iStock. https://www.istockphoto.com/es/vector/5-electrocardiogramas-de-colocaci%C3%B3n-de-electrodos-de-plomo-ra-la-rl-ll-v-posici%C3%B3n-gm1586070345-529063354
 [^5^]: Neurosce. (2023, 16 junio). ▷ El sistema nervioso autónomo. Neuroscenter. https://neuroscenter.com/blog/sistema-nervioso-autonomo/
 [^6^]: DASHBOARD IV. (2023, 7 septiembre). Genially. https://view.genially.com/64f8112ad70759001171057a/interactive-content-dashboard-iv
+[^7^]: Figura Wavelet Morlet. (2006, julio). ResearchGate. https://www.researchgate.net/figure/Real-and-imaginary-parts-of-the-Morlet-wavelet_fig13_241727350
