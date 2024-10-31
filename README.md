@@ -193,8 +193,19 @@ Para comprender la señal en su estado bruto, es fundamental evaluar sus estadí
 - **Desviación Estándar**: 0.3535
   - La desviación estándar mide la dispersión de los valores de la señal respecto a la media. Un valor bajo sugiere que la señal no presenta grandes fluctuaciones alrededor de la media, mientras que un valor más alto indicaría variabilidad significativa. En este caso, una desviación estándar de 0.3535 implica una dispersión moderada, indicando cierta variabilidad en la señal sin ser extremadamente volátil.
 
+```python
+#ESTADÍSTICAS DE LA SENAL CRUDA
 
+# Calcular estadísticas 
+media = np.mean(data)
+mediana = np.median(data)
+desviacion= np.std(data)
 
+# Imprimir estadísticas generales
+print(f"Media de la señal original: {media:.4f}")
+print(f"Mediana de la señal original : {mediana:.4f}")
+print(f"Desviación estándar de la señal original: {desviacion:.4f}")
+```
 
 [^1^]:Guía de colocación de electrodos. (s. f.). Neotecnia. https://neotecnia.mx/blogs/noticias/guia-de-colocacion-de-electrodos?srsltid=AfmBOopEYZV3x6zO5EtnVZ28WQZA4e1kedPIHHK8izv-80wiKwPuaQQI
 [^2^]:National Instruments. (s/f). Multifunction Input and Output Devices. https://www.ni.com/pdf/product-flyers/multifunction-io.pdf
