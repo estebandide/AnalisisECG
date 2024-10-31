@@ -306,6 +306,8 @@ La implementación de este filtro rechaza banda aporta múltiples beneficios:
 
 - **Flexibilidad en el Análisis**: La elección de frecuencias de corte específicas permite que el filtro se adapte a diferentes contextos y condiciones de ruido, brindando la flexibilidad necesaria para realizar análisis bajo diversas condiciones experimentales.
 
+<img src="https://github.com/estebandide/AnalisisECG/blob/main/FILTRO.jpg"  width="900" height="300">
+*Figura 5: Señal filtrada verde (Pasa banda), señal filtrada azul (rechaza banda). Tomado de : Autoría propia*
 
 [^1^]:Guía de colocación de electrodos. (s. f.). Neotecnia. https://neotecnia.mx/blogs/noticias/guia-de-colocacion-de-electrodos?srsltid=AfmBOopEYZV3x6zO5EtnVZ28WQZA4e1kedPIHHK8izv-80wiKwPuaQQI
 [^2^]:National Instruments. (s/f). Multifunction Input and Output Devices. https://www.ni.com/pdf/product-flyers/multifunction-io.pdf
