@@ -510,7 +510,7 @@ En el espectrograma, se observa una variación notable en la intensidad y amplit
 
 En la banda HF, relacionada con la respiración y el tono vagal (actividad parasimpática), se notan zonas de mayor intensidad en diferentes intervalos de tiempo. Sin embargo, estas variaciones tienden a ser menos intensas que en la banda LF. La amplitud en esta región representa el efecto del sistema nervioso parasimpático sobre el ritmo cardíaco. Un aumento en la potencia espectral en la banda HF podría estar relacionado con un estado de relajación o recuperación. Si la potencia en la banda HF es alta y estable, se podría inferir que el sistema nervioso parasimpático mantiene un tono constante, lo cual es común en individuos en reposo.
 
-<img src="https://github.com/estebandide/AnalisisECG/blob/main/Morlet.png"  width="500" height="400">
+<img src="https://github.com/estebandide/AnalisisECG/blob/main/Espectro.jpg"  width="500" height="400">
 
 *Figura 13: Espectograma transformada Wavelet. Tomado de : [^7^]*
 
