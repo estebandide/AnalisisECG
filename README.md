@@ -193,12 +193,6 @@ Para comprender la señal en su estado bruto, es fundamental evaluar sus estadí
 - **Desviación Estándar**: 0.3535
   - La desviación estándar mide la dispersión de los valores de la señal respecto a la media. Un valor bajo sugiere que la señal no presenta grandes fluctuaciones alrededor de la media, mientras que un valor más alto indicaría variabilidad significativa. En este caso, una desviación estándar de 0.3535 implica una dispersión moderada, indicando cierta variabilidad en la señal sin ser extremadamente volátil.
 
-### Interpretación General
-
-Esta señal cruda, con sus características y estadísticos principales, ofrece una base sólida para el análisis en profundidad. A partir de estos datos, se pueden realizar diversos pasos de procesamiento, como filtrado de ruido y descomposición en frecuencias específicas, para extraer información detallada y patrones que serían menos visibles en el estado bruto.
-
-La revisión de estas estadísticas es clave para entender el comportamiento general de la señal y asegurar que los valores registrados son consistentes con lo esperado, ayudando a identificar posibles anomalías en el registro inicial antes de proceder a etapas de procesamiento avanzadas.
-
 
 
 
