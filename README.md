@@ -163,6 +163,42 @@ tiempo = np.arange(len(data)) / fs # Generar el eje de tiempo
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/crudo.jpg"  width="900" height="300">
 *Figura 5: Señal en crudo. Tomado de : Autoría propia*
 
+## Análisis de la Señal Cruda
+
+La señal cruda registrada presenta todas las características fundamentales que definen su naturaleza en bruto, sin aplicar ningún tipo de filtrado o procesamiento. Estos detalles permiten evaluar las propiedades básicas y comportamiento de la señal, lo que es esencial para entender su composición y preparar los pasos posteriores de análisis y procesamiento.
+
+### Características de la Señal Original
+
+#### Frecuencia de Muestreo
+- **Frecuencia de muestreo**: 250 Hz
+- La frecuencia de muestreo de 250 Hz indica que la señal fue capturada 250 veces por segundo. Este valor es adecuado para capturar variaciones rápidas en la señal, permitiendo representar con precisión los eventos de alta frecuencia y evitando problemas de aliasing, siempre que el contenido de la señal esté dentro del rango permitido.
+
+#### Tiempo de Muestreo
+- **Duración total del muestreo**: 300 segundos
+- Este tiempo total de registro permite analizar la señal en períodos prolongados, detectando posibles patrones cíclicos o cambios de amplitud que podrían aparecer en intervalos largos.
+
+#### Niveles de Cuantificación
+- La señal fue digitalizada y cuantificada en niveles específicos. Los niveles de cuantificación afectan la precisión con la que se representan las amplitudes, ya que cada nivel representa un rango de valores de la señal original. Una mayor cantidad de niveles ofrece una representación más fiel de la señal análoga original.
+
+### Estadísticas de la Señal Original
+
+Para comprender la señal en su estado bruto, es fundamental evaluar sus estadísticas básicas. A continuación, se presentan las métricas más representativas:
+
+- **Media**: 1.9075
+  - La media de la señal, o valor promedio, indica la tendencia central de la amplitud. Un valor cercano a cero en ciertas señales puede indicar simetría alrededor del eje horizontal, mientras que en esta señal, una media de 1.9075 sugiere un desplazamiento en la amplitud.
+
+- **Mediana**: 1.8740
+  - La mediana representa el valor central de la señal y proporciona información sobre la distribución de los datos. Si la mediana y la media son muy similares, como en este caso, la señal probablemente presenta una distribución aproximadamente simétrica.
+
+- **Desviación Estándar**: 0.3535
+  - La desviación estándar mide la dispersión de los valores de la señal respecto a la media. Un valor bajo sugiere que la señal no presenta grandes fluctuaciones alrededor de la media, mientras que un valor más alto indicaría variabilidad significativa. En este caso, una desviación estándar de 0.3535 implica una dispersión moderada, indicando cierta variabilidad en la señal sin ser extremadamente volátil.
+
+### Interpretación General
+
+Esta señal cruda, con sus características y estadísticos principales, ofrece una base sólida para el análisis en profundidad. A partir de estos datos, se pueden realizar diversos pasos de procesamiento, como filtrado de ruido y descomposición en frecuencias específicas, para extraer información detallada y patrones que serían menos visibles en el estado bruto.
+
+La revisión de estas estadísticas es clave para entender el comportamiento general de la señal y asegurar que los valores registrados son consistentes con lo esperado, ayudando a identificar posibles anomalías en el registro inicial antes de proceder a etapas de procesamiento avanzadas.
+
 
 
 
