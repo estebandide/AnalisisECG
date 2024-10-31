@@ -185,13 +185,13 @@ La señal cruda registrada presenta todas las características fundamentales que
 Para comprender la señal en su estado bruto, es fundamental evaluar sus estadísticas básicas. A continuación, se presentan las métricas más representativas:
 
 - **Media**: 1.9075
-  - La media de la señal, o valor promedio, indica la tendencia central de la amplitud. Un valor cercano a cero en ciertas señales puede indicar simetría alrededor del eje horizontal, mientras que en esta señal, una media de 1.9075 sugiere un desplazamiento en la amplitud.
+  La media de la señal, o valor promedio, indica la tendencia central de la amplitud. Un valor cercano a cero en ciertas señales puede indicar simetría alrededor del eje horizontal, mientras que en esta señal, una media de 1.9075 sugiere un desplazamiento en la amplitud.
 
 - **Mediana**: 1.8740
-  - La mediana representa el valor central de la señal y proporciona información sobre la distribución de los datos. Si la mediana y la media son muy similares, como en este caso, la señal probablemente presenta una distribución aproximadamente simétrica.
+  La mediana representa el valor central de la señal y proporciona información sobre la distribución de los datos. Si la mediana y la media son muy similares, como en este caso, la señal probablemente presenta una distribución aproximadamente simétrica.
 
 - **Desviación Estándar**: 0.3535
-  - La desviación estándar mide la dispersión de los valores de la señal respecto a la media. Un valor bajo sugiere que la señal no presenta grandes fluctuaciones alrededor de la media, mientras que un valor más alto indicaría variabilidad significativa. En este caso, una desviación estándar de 0.3535 implica una dispersión moderada, indicando cierta variabilidad en la señal sin ser extremadamente volátil.
+  La desviación estándar mide la dispersión de los valores de la señal respecto a la media. Un valor bajo sugiere que la señal no presenta grandes fluctuaciones alrededor de la media, mientras que un valor más alto indicaría variabilidad significativa. En este caso, una desviación estándar de 0.3535 implica una dispersión moderada, indicando cierta variabilidad en la señal sin ser extremadamente volátil.
 
 ```python
 #ESTADÍSTICAS DE LA SENAL CRUDA
