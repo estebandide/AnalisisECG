@@ -102,15 +102,27 @@ La Transformada Wavelet se usa en:
 ## Adquisición de la señal ECG
 Para la captura de la señal ECG, se seleccionó un sujeto de manera anónima, quien autorizó el uso de su señal bajo condiciones de confidencialidad. La adquisición de la señal se realizó mediante una tarjeta DAQ que es un dispositivo utilizado para medir señales físicas y convertirlas en datos digitales que puedan ser procesado, siguiendo una guía específica para la colocación de los electrodos. La ubicación de los electrodos se basó en las recomendaciones establecidas en [^1^], asegurando una correcta captación de la actividad eléctrica cardíaca. Se incluyó una explicación detallada en cada sección para clarificar los procedimientos técnicos y metodológicos empleados en cada etapa del proceso de adquisición.
 
+<img src="https://github.com/lavaltt/Analisis_de_senales_EMG/blob/main/daq.jpg?raw=true"  width="400" height="300">
+
+*Figura 2: Data Acquisition System. Tomado de : [^2^]*
 
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/LABVIEW.jpg"  width="600" height="500">
 
 *Figura 1: Esquema LabVIEW. Tomado de autoria propia*
 
+Se puede observar un programa de LabVIEW para adquirir, visualizar y guardar datos usando una tarjeta de adquisición de datos (DAQ). Este sistema es útil para captar y analizar señales en tiempo real, como las provenientes de sensores de ECG, EMG.
+Panel Frontal y Diagrama de Bloques: En LabVIEW, el panel frontal (parte izquierda de la imagen) es la interfaz de usuario, donde se observa un gráfico de "Waveform Chart" que permite visualizar en tiempo real los datos capturados. Al lado derecho está el diagrama de bloques, donde se construye la lógica del programa a través de distintos nodos y cables de conexión que controlan el flujo de datos. En el diagrama, se observa el uso de un "DAQ Assistant", un botón de parada ("stop") y un nodo para guardar los datos en un archivo CSV.
 
-<img src="https://github.com/lavaltt/Analisis_de_senales_EMG/blob/main/daq.jpg?raw=true"  width="400" height="300">
+DAQ Assistant: El bloque azul es el DAQ Assistant, un asistente de configuración que facilita la adquisición de datos desde la tarjeta DAQ. Al configurarlo, permite seleccionar el canal de entrada del DAQ, la velocidad de muestreo, el tipo de señal, entre otros parámetros. Este bloque obtiene los datos en tiempo real del sensor conectado al DAQ y los envía a los siguientes bloques para ser procesados y visualizados. En este caso, el DAQ Assistant está configurado para capturar una señal continua.
 
-*Figura 2: Data Acquisition System. Tomado de : [^2^]*
+Waveform Chart: El "Waveform Chart" está conectado al DAQ Assistant, lo que permite mostrar la señal en tiempo real en el panel frontal. Este gráfico actúa como un osciloscopio virtual, mostrando la amplitud de la señal en el eje vertical y el tiempo en el eje horizontal. Esto es particularmente útil para monitorear variaciones o tendencias en la señal.
+
+Botón de Parada (Stop): El botón "stop" permite al usuario finalizar el proceso de adquisición y visualización de datos de manera controlada. Este botón está conectado al ciclo que controla el flujo del programa, de modo que cuando el usuario lo presiona, el ciclo se detiene, cesando la adquisición y evitando un cierre abrupto de la aplicación.
+
+Guardar Datos en Archivo CSV: Finalmente, el bloque conectado a una ruta de archivo específica guarda los datos en un archivo CSV. Este archivo es útil para almacenar la señal registrada durante el tiempo de ejecución del programa, permitiendo un análisis posterior en otras plataformas como MATLAB o Python. En el diagrama, se ve que el archivo se guarda en la ruta específicada, lo cual indica que los datos capturados (como la señal de ECG) se exportarán a este archivo de texto, cada vez que se ejecute el programa, creando un respaldo de la información adquirida.
+
+Cada bloque cumple una función específica y, al estar conectados entre sí, forman un flujo de datos ordenado que facilita la adquisición, visualización y almacenamiento de la señal en LabVIEW.
+
 
 Adicionalmente, se utilizó un módulo AD8232, un sensor diseñado para medir la actividad cardíaca. Este módulo se destaca por su precisión en la captura de señales cardíacas, ya que su proceso de amplificación y filtrado resulta óptimo para este tipo de señal. Además, permite una fácil lectura de la señal por parte de la tarjeta DAQ, facilitando la adquisición y procesamiento de la actividad eléctrica del corazón.
 
