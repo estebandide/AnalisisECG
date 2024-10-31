@@ -514,6 +514,66 @@ La aplicación de la transformada Morlet en el análisis de señales de ECG se j
 
 **Adaptabilidad a la Complejidad de la Señal:** Las señales de ECG pueden estar afectadas por ruido y artefactos. La transformada Morlet es robusta ante estas perturbaciones, lo que facilita un análisis más limpio y confiable de la señal.
 
+```python
+#TRANSFORMADA WAVELET
+
+scales = np.arange(10, 200)  
+
+# Aplica la CWT(Constant Wavelet Transform) con wavelet Morlet 
+coef, freqs = pywt.cwt(intervalos_RR, scales, 'morl', sampling_period=1/fs)
+
+# Normaliza los coeficientes de CWT
+coef_norm = np.abs(coef) / np.max(np.abs(coef))
+```
+
+El código implementa la transformada wavelet continua (CWT) utilizando la wavelet Morlet para analizar los intervalos R-R de una señal ECG. Primero, se definen las escalas de análisis, que van de 10 a 200. Luego, se aplica la CWT a los intervalos R-R, obteniendo los coeficientes que reflejan la energía de la señal en diferentes escalas y momentos. Finalmente, los coeficientes se normalizan para facilitar la visualización y comparación, lo que permite identificar patrones en la variabilidad de la frecuencia cardíaca.
+
+### Bandas de Frecuencia en el Análisis de ECG
+
+El análisis de las bandas de frecuencia es fundamental para entender la dinámica del sistema nervioso autónomo y su relación con la variabilidad de la frecuencia cardíaca (HRV). A continuación, se detallan las características y significados de las bandas de baja frecuencia (LF) y alta frecuencia (HF).
+
+### Banda de Baja Frecuencia (LF)
+
+**Rango de Frecuencia:**  
+Generalmente, la banda de baja frecuencia se considera que abarca de **0.04 a 0.15 Hz**. Esta banda es esencial para comprender el equilibrio entre las actividades simpática y parasimpática del sistema nervioso.
+
+**Interpretación:**  
+La banda LF está asociada con la actividad tanto del sistema nervioso simpático como del parasimpático. Un aumento en la potencia de la banda LF puede indicar una mayor actividad simpática, lo que sugiere que el cuerpo se encuentra en un estado de estrés o excitación. Este incremento en la actividad simpática puede reflejarse en situaciones de desafío, ansiedad o en momentos de esfuerzo físico.
+
+Desde el punto de vista de la salud, niveles crónicamente elevados de LF pueden estar relacionados con un riesgo mayor de eventos cardiovasculares. Esto se debe a que la activación sostenida del sistema nervioso simpático puede contribuir a la hipertensión y otros problemas cardíacos. 
+
+**Observaciones en el Espectrograma:**  
+En el espectrograma, se pueden identificar picos en la amplitud normalizada dentro de esta banda. La duración y la frecuencia de estos picos son cruciales para la interpretación de los datos. Por ejemplo, un pico prolongado en LF podría sugerir un estado sostenido de estrés, mientras que picos cortos y agudos podrían reflejar respuestas rápidas a situaciones estresantes. Estos patrones pueden ayudar a los clínicos a identificar momentos críticos en los que un paciente podría estar experimentando un estrés significativo.
+
+### Banda de Alta Frecuencia (HF)
+
+**Rango de Frecuencia:**  
+Se considera que la banda de alta frecuencia abarca de **0.15 a 0.4 Hz**. Esta banda es especialmente relevante para el estudio de la respiración y la actividad parasimpática.
+
+**Interpretación:**  
+La banda HF está principalmente asociada con la actividad parasimpática, que está relacionada con la relajación y la regulación de la respiración. Un aumento en la amplitud de la banda HF indica una mayor actividad del sistema nervioso parasimpático, lo que sugiere un estado de relajación y bienestar. Esto puede ser observado en situaciones de calma, meditación o durante el sueño.
+
+La relación entre las bandas LF y HF, comúnmente representada como la proporción LF/HF, se utiliza como un indicador del equilibrio entre la actividad simpática y parasimpática. Un valor elevado de esta relación puede indicar un predominio de la actividad simpática, mientras que un valor bajo sugiere un predominio parasimpático. Este equilibrio es crucial para la salud cardiovascular y el manejo del estrés.
+
+**Observaciones en el Espectrograma:**  
+En el espectrograma, la amplitud normalizada en la banda HF puede mostrar variaciones significativas a lo largo del tiempo. Picos en la banda HF, especialmente aquellos que coinciden con períodos de respiración profunda o meditación, pueden reflejar un estado de calma y recuperación. La identificación de estos picos puede ser útil en terapias de manejo del estrés y bienestar.
+
+### Variaciones a lo Largo del Tiempo
+
+**Cambios en la Potencia Espectral**  
+**Análisis Temporal:**  
+A lo largo del espectrograma, es crucial observar cómo varían las potencias en las bandas LF y HF. Por ejemplo, un incremento en la potencia de LF podría coincidir con un evento estresante, como una tarea exigente o una discusión emocional. En contraste, un aumento en la potencia de HF podría correlacionarse con momentos de relajación, como durante la meditación o el sueño profundo.
+
+**Impacto de Eventos Externos:**  
+Cambios abruptos en la potencia espectral pueden estar relacionados con estímulos externos, como el ejercicio físico, el estrés emocional o cambios ambientales. Estos eventos pueden ser identificados en el espectrograma como picos o caídas repentinas en la amplitud normalizada. El análisis de estos cambios puede proporcionar información valiosa sobre la respuesta del cuerpo a diferentes factores estresantes.
+
+### Patrones Temporales
+
+**Identificación de Patrones:**  
+Se pueden observar patrones específicos en el espectrograma, como ciclos regulares de aumento y disminución en las amplitudes de LF y HF. La periodicidad de estos ciclos puede proporcionar información sobre la salud cardiovascular y la respuesta del cuerpo a diferentes estímulos. Reconocer estos patrones permite a los profesionales de la salud comprender mejor el comportamiento del sistema nervioso autónomo.
+
+**Duración de los Picos:**  
+La duración de los picos en ambas bandas es igualmente importante. Picos cortos pueden indicar respuestas rápidas a estímulos, mientras que picos más largos pueden sugerir estados sostenidos de estrés o relajación. La variabilidad en la duración y la amplitud de estos picos puede ser indicativa de la resiliencia del sistema nervioso autónomo ante el estrés. Un análisis exhaustivo de estas características puede contribuir a un mejor entendimiento de la salud mental y física de un individuo.
 
 
 [^1^]:Guía de colocación de electrodos. (s. f.). Neotecnia. https://neotecnia.mx/blogs/noticias/guia-de-colocacion-de-electrodos?srsltid=AfmBOopEYZV3x6zO5EtnVZ28WQZA4e1kedPIHHK8izv-80wiKwPuaQQI
