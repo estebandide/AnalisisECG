@@ -330,14 +330,17 @@ En el análisis de señales, se utilizó un **filtro rechaza banda de orden 3** 
 
 ##### Diseño del Filtro
 Calculos a mano:
+
 ![WhatsApp Image 2024-10-29 at 21 22 04_2191f5dd](https://github.com/user-attachments/assets/bd27eb62-1a47-4433-beb1-3792912b60d5)
 
 
-**Rechaza Banda**: Este tipo de filtro se diseñó para atenuar las frecuencias en un rango específico (50 Hz a 60 Hz) mientras permite el paso de las frecuencias que se encuentran por debajo y por encima de este rango. Este enfoque es crítico en el análisis de señales biológicas, donde ciertas frecuencias pueden introducir ruido significativo.
+##### Rechaza Banda 
+Este tipo de filtro se diseñó para atenuar las frecuencias en un rango específico (50 Hz a 60 Hz) mientras permite el paso de las frecuencias que se encuentran por debajo y por encima de este rango. Este enfoque es crítico en el análisis de señales biológicas, donde ciertas frecuencias pueden introducir ruido significativo.
 
-**Orden del Filtro**: Un filtro de orden 3 ofrece una transición más pronunciada en la respuesta en frecuencia, lo que significa que las frecuencias cercanas al rango de rechazo se atenuarán de manera efectiva. Esto es fundamental para minimizar el impacto de las interferencias en las frecuencias que se desean conservar.
+##### Orden del Filtro
+Un filtro de orden 3 ofrece una transición más pronunciada en la respuesta en frecuencia, lo que significa que las frecuencias cercanas al rango de rechazo se atenuarán de manera efectiva. Esto es fundamental para minimizar el impacto de las interferencias en las frecuencias que se desean conservar.
 
-**Frecuencias de Corte**:
+##### Frecuencias de Corte
    - **-3 dB (50 Hz a 60 Hz)**: Este rango está diseñado para eliminar componentes no deseadas que pueden interferir con la señal de interés. Muchas veces, las interferencias pueden provenir de fuentes eléctricas o equipos cercanos que operan en este rango, por lo que su eliminación es esencial para obtener una señal limpia.
    - **-20 dB (52 Hz a 58 Hz)**: Esta subbanda más estrecha permite un rechazo aún más fuerte en las frecuencias cercanas al rango de interés. El objetivo es eliminar ruidos que podrían ser críticos y que pueden distorsionar la interpretación de los datos, particularmente en aplicaciones donde la precisión es fundamental.
      
