@@ -106,22 +106,40 @@ Para la captura de la señal ECG, se seleccionó un sujeto de manera anónima, q
 
 *Figura 2: Data Acquisition System. Tomado de : [^2^]*
 
+
+### LabVIEW para Adquisición de Datos
+
+LabVIEW permite adquirir, visualizar y guardar datos utilizando una tarjeta de adquisición de datos (DAQ). Este sistema es especialmente útil para captar y analizar señales en tiempo real, como las provenientes de sensores de ECG y EMG.
+
+### Componentes del Programa
+
+### Panel Frontal y Diagrama de Bloques
+
+En LabVIEW, el **panel frontal** (parte izquierda de la imagen) actúa como la interfaz de usuario. En él, se observa un gráfico de **"Waveform Chart"** que permite visualizar en tiempo real los datos capturados. A la derecha, se encuentra el **diagrama de bloques**, donde se construye la lógica del programa mediante distintos nodos y cables de conexión que controlan el flujo de datos. 
+
+- **DAQ Assistant:** En el diagrama, se utiliza un **"DAQ Assistant"**, un botón de **parada ("stop")** y un nodo para guardar los datos en un archivo CSV.
+
+### DAQ Assistant
+
+El bloque azul identificado como **DAQ Assistant** es un asistente de configuración que facilita la adquisición de datos desde la tarjeta DAQ. Al configurarlo, se pueden seleccionar parámetros clave como el canal de entrada del DAQ, la velocidad de muestreo y el tipo de señal. Este bloque obtiene los datos en tiempo real del sensor conectado al DAQ y los envía a los siguientes bloques para su procesamiento y visualización. En este caso, el DAQ Assistant está configurado para capturar una señal continua.
+
+### Waveform Chart
+
+El **"Waveform Chart"** está conectado al DAQ Assistant, lo que permite mostrar la señal en tiempo real en el panel frontal. Este gráfico actúa como un **osciloscopio virtual**, mostrando la amplitud de la señal en el eje vertical y el tiempo en el eje horizontal. Esto es particularmente útil para monitorear variaciones o tendencias en la señal.
+
+### Botón de Parada (Stop)
+
+El **botón "stop"** permite al usuario finalizar el proceso de adquisición y visualización de datos de manera controlada. Este botón está conectado al ciclo que controla el flujo del programa, de modo que al presionarlo, el ciclo se detiene, cesando la adquisición y evitando un cierre abrupto de la aplicación.
+
+### Guardar Datos en Archivo CSV
+
+Finalmente, el bloque que se conecta a una ruta de archivo específica guarda los datos en un archivo CSV. Este archivo es útil para almacenar la señal registrada durante el tiempo de ejecución del programa, permitiendo un análisis posterior en otras plataformas como MATLAB o Python. En el diagrama, se observa que el archivo se guarda en la ruta especificada, lo que indica que los datos capturados (como la señal de ECG) se exportarán a este archivo de texto cada vez que se ejecute el programa, creando un respaldo de la información adquirida.
+
+
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/LABVIEW.jpg"  width="600" height="500">
 
 *Figura 1: Esquema LabVIEW. Tomado de autoria propia*
 
-Se puede observar un programa de LabVIEW para adquirir, visualizar y guardar datos usando una tarjeta de adquisición de datos (DAQ). Este sistema es útil para captar y analizar señales en tiempo real, como las provenientes de sensores de ECG, EMG.
-Panel Frontal y Diagrama de Bloques: En LabVIEW, el panel frontal (parte izquierda de la imagen) es la interfaz de usuario, donde se observa un gráfico de "Waveform Chart" que permite visualizar en tiempo real los datos capturados. Al lado derecho está el diagrama de bloques, donde se construye la lógica del programa a través de distintos nodos y cables de conexión que controlan el flujo de datos. En el diagrama, se observa el uso de un "DAQ Assistant", un botón de parada ("stop") y un nodo para guardar los datos en un archivo CSV.
-
-DAQ Assistant: El bloque azul es el DAQ Assistant, un asistente de configuración que facilita la adquisición de datos desde la tarjeta DAQ. Al configurarlo, permite seleccionar el canal de entrada del DAQ, la velocidad de muestreo, el tipo de señal, entre otros parámetros. Este bloque obtiene los datos en tiempo real del sensor conectado al DAQ y los envía a los siguientes bloques para ser procesados y visualizados. En este caso, el DAQ Assistant está configurado para capturar una señal continua.
-
-Waveform Chart: El "Waveform Chart" está conectado al DAQ Assistant, lo que permite mostrar la señal en tiempo real en el panel frontal. Este gráfico actúa como un osciloscopio virtual, mostrando la amplitud de la señal en el eje vertical y el tiempo en el eje horizontal. Esto es particularmente útil para monitorear variaciones o tendencias en la señal.
-
-Botón de Parada (Stop): El botón "stop" permite al usuario finalizar el proceso de adquisición y visualización de datos de manera controlada. Este botón está conectado al ciclo que controla el flujo del programa, de modo que cuando el usuario lo presiona, el ciclo se detiene, cesando la adquisición y evitando un cierre abrupto de la aplicación.
-
-Guardar Datos en Archivo CSV: Finalmente, el bloque conectado a una ruta de archivo específica guarda los datos en un archivo CSV. Este archivo es útil para almacenar la señal registrada durante el tiempo de ejecución del programa, permitiendo un análisis posterior en otras plataformas como MATLAB o Python. En el diagrama, se ve que el archivo se guarda en la ruta específicada, lo cual indica que los datos capturados (como la señal de ECG) se exportarán a este archivo de texto, cada vez que se ejecute el programa, creando un respaldo de la información adquirida.
-
-Cada bloque cumple una función específica y, al estar conectados entre sí, forman un flujo de datos ordenado que facilita la adquisición, visualización y almacenamiento de la señal en LabVIEW.
 
 
 Adicionalmente, se utilizó un módulo AD8232, un sensor diseñado para medir la actividad cardíaca. Este módulo se destaca por su precisión en la captura de señales cardíacas, ya que su proceso de amplificación y filtrado resulta óptimo para este tipo de señal. Además, permite una fácil lectura de la señal por parte de la tarjeta DAQ, facilitando la adquisición y procesamiento de la actividad eléctrica del corazón.
@@ -441,6 +459,62 @@ smoothed_intervals = np.convolve(intervalos_RR, np.ones(window_size) / window_si
 ```
 
 Este código calcula estadísticas básicas (media, mediana y desviación estándar) de los intervalos R-R de una señal ECG, que representan el tiempo entre dos picos cardíacos consecutivos y reflejan la variabilidad del ritmo. Además, aplica un suavizado con una ventana móvil de tamaño 5 para resaltar la tendencia general de los intervalos, eliminando fluctuaciones rápidas. Finalmente, grafica los datos usando un tamaño de figura amplio para visualizar la evolución de estos intervalos de forma clara.
+
+## Aplicacion Transformada Wavelet 
+
+
+<img src="https://github.com/estebandide/AnalisisECG/blob/main/ESTA.jpg"  width="500" height="400">
+*Figura 5: Espectograma transformada Wavelet. Tomado de : Autoría propia*
+
+### Análisis del Espectrograma de la Variabilidad de la Frecuencia Cardíaca (HRV)
+
+El espectrograma de la variabilidad de la frecuencia cardíaca (HRV) se generó utilizando la transformada wavelet continua (CWT) y una wavelet Morlet. Este espectrograma permite observar las variaciones en el dominio de la frecuencia a lo largo del tiempo.
+
+### Introducción a la HRV
+
+La HRV es una medida que refleja la actividad del sistema nervioso autónomo sobre el ritmo cardíaco. Se caracteriza por la presencia de componentes de frecuencia en diferentes bandas:
+
+- **Banda de Baja Frecuencia (LF):** Aproximadamente entre 0.04 y 0.15 Hz.
+- **Banda de Alta Frecuencia (HF):** Aproximadamente entre 0.15 y 0.4 Hz.
+
+Estos componentes están relacionados con procesos fisiológicos específicos:
+- La banda LF está asociada con la actividad simpática y parasimpática.
+- La banda HF se asocia principalmente con la actividad parasimpática y la respiración.
+
+### Análisis por Bandas
+
+### Banda de Baja Frecuencia (LF)
+
+En el espectrograma, se observa una variación notable en la intensidad y amplitud de la señal a lo largo del tiempo en la banda LF. Esto sugiere que la actividad simpática y parasimpática fluctúa durante el registro. En ciertos periodos, se perciben incrementos en la potencia espectral en la banda LF, lo que podría indicar momentos de mayor actividad simpática o un equilibrio entre los sistemas simpático y parasimpático. Estos cambios pueden reflejar variaciones en la respuesta fisiológica a lo largo del tiempo, como ajustes a diferentes estados de reposo o estrés.
+
+### Banda de Alta Frecuencia (HF)
+
+En la banda HF, relacionada con la respiración y el tono vagal (actividad parasimpática), se notan zonas de mayor intensidad en diferentes intervalos de tiempo. Sin embargo, estas variaciones tienden a ser menos intensas que en la banda LF. La amplitud en esta región representa el efecto del sistema nervioso parasimpático sobre el ritmo cardíaco. Un aumento en la potencia espectral en la banda HF podría estar relacionado con un estado de relajación o recuperación. Si la potencia en la banda HF es alta y estable, se podría inferir que el sistema nervioso parasimpático mantiene un tono constante, lo cual es común en individuos en reposo.
+
+<img src="https://github.com/estebandide/AnalisisECG/blob/main/Morlet.png"  width="500" height="400">
+*Figura 5: Espectograma transformada Wavelet. Tomado de : Autoría propia*
+
+### Uso de la Transformada Morlet en el Análisis de ECG
+
+### ¿Qué es la Transformada Morlet?
+
+La **transformada Morlet** es una herramienta matemática utilizada en el análisis de señales, especialmente en el contexto de la **transformada wavelet continua (CWT)**. Esta transformada combina características de la **transformada de Fourier** y las wavelets, permitiendo analizar señales en términos de frecuencia y tiempo simultáneamente. La wavelet Morlet se compone de una onda sinusoidal modulada por una función gaussiana, lo que le confiere propiedades de localización en el tiempo y en la frecuencia.
+
+La Morlet es particularmente útil para detectar y analizar componentes de frecuencia que pueden no ser evidentes en el dominio del tiempo. Su capacidad para adaptarse a diferentes escalas permite un análisis más detallado de las variaciones en la señal, facilitando la identificación de patrones y características específicas.
+
+### ¿Por qué se usó la Transformada Morlet para el ECG?
+
+La aplicación de la transformada Morlet en el análisis de señales de ECG se justifica por varias razones:
+
+**Análisis Temporal y Frecuencial:** La señal ECG es compleja y presenta variaciones en el tiempo y la frecuencia. La transformada Morlet permite observar cómo cambian las frecuencias a lo largo del tiempo, lo que es esencial para entender la dinámica del ritmo cardíaco.
+
+**Detección de Componentes de Frecuencia:** La HRV (variabilidad de la frecuencia cardíaca) es un aspecto crítico del análisis del ECG, ya que refleja la actividad del sistema nervioso autónomo. La transformada Morlet es eficaz para identificar componentes de frecuencia en diferentes bandas (LF y HF) y ayuda a distinguir entre la actividad simpática y parasimpática.
+
+**Mejor Resolución Temporal:** A diferencia de la transformada de Fourier, que proporciona una resolución fija en el tiempo y la frecuencia, la transformada Morlet ofrece una resolución ajustable, lo que permite un análisis más preciso de eventos transitorios en la señal ECG, como arritmias o cambios en la frecuencia cardíaca.
+
+**Adaptabilidad a la Complejidad de la Señal:** Las señales de ECG pueden estar afectadas por ruido y artefactos. La transformada Morlet es robusta ante estas perturbaciones, lo que facilita un análisis más limpio y confiable de la señal.
+
+
 
 [^1^]:Guía de colocación de electrodos. (s. f.). Neotecnia. https://neotecnia.mx/blogs/noticias/guia-de-colocacion-de-electrodos?srsltid=AfmBOopEYZV3x6zO5EtnVZ28WQZA4e1kedPIHHK8izv-80wiKwPuaQQI
 [^2^]:National Instruments. (s/f). Multifunction Input and Output Devices. https://www.ni.com/pdf/product-flyers/multifunction-io.pdf
