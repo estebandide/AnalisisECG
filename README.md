@@ -149,6 +149,8 @@ plt.ylabel("Amplitud (V)")
 plt.grid()
 plt.show()
 ```
+Este código grafica la señal ECG previamente cargada en función del tiempo. Se configura una figura de tamaño amplio (50x10), y se usa `plt.plot` para trazar los datos de `data` en el eje vertical (amplitud) contra el eje de tiempo `tiempo` (en segundos), en color rojo. La gráfica se titula "Señal ECG" y se etiquetan los ejes para claridad. Finalmente, se agrega una cuadrícula (`plt.grid()`) para facilitar la lectura visual y se muestra la gráfica (`plt.show()`).
+
 ## Carga de datos
 Los datos adquiridos gracias a la DAQ y python, fueron guardados en un archivo tipo .csv para su correcto análisis y desarrollo. Inicialmente, para cargar los datos en este formato se utilizó la libreria pandas y se graficaron los adtos para observar la señal EMG obtenida. 
 
@@ -170,6 +172,7 @@ fs = 250
 print(data[:5]) # verificar los datos
 tiempo = np.arange(len(data)) / fs # Generar el eje de tiempo
 ```
+Este código abre y carga datos de un archivo CSV (datosECG4.csv) que contiene valores de una señal ECG, reemplazando comas por puntos para convertir las lecturas a formato numérico. Tras leer las líneas y limpiar los valores, se almacenan en la lista data, omitiendo cualquier línea que no sea numérica. Luego, data se convierte a un arreglo de NumPy y se define la frecuencia de muestreo (fs = 250 Hz). Finalmente, se crea un eje de tiempo tiempo para la señal, que permitirá representar la señal ECG en función del tiempo.
 
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/crudo.jpg"  width="900" height="300">
 *Figura 5: Señal en crudo. Tomado de : Autoría propia*
@@ -203,12 +206,13 @@ Para comprender la señal en su estado bruto, es fundamental evaluar sus estadí
 
 ```python
 #ESTADÍSTICAS DE LA SENAL CRUDA
-
 # Calcular estadísticas 
 media = np.mean(data)
 mediana = np.median(data)
 desviacion= np.std(data)
 ```
+Este código calcula estadísticas básicas de la señal cruda data, obteniendo su media, mediana y desviación estándar. La media y mediana indican el valor promedio y central de la señal, respectivamente, mientras que la desviación estándar mide la variabilidad o dispersión de los valores de la señal alrededor de la media. Estos cálculos permiten entender las características generales de la señal sin procesar.
+
 ## Pre-procesamineto de la señal
 
 ### Filtro pasa-banda 
@@ -254,6 +258,8 @@ high = hc / nyquist
 b_bandpass, a_bandpass = signal.butter(order_bandpass, [low, high], btype='band')
 filtered_data = signal.filtfilt(b_bandpass, a_bandpass, data)
 ```
+
+Este código configura y aplica un filtro pasa banda Butterworth para permitir el paso de frecuencias entre 5 y 100 Hz, filtrando otras frecuencias de una señal. Se definen las frecuencias de corte bajas (lc) y altas (hc), ajustadas al rango de Nyquist. Con un filtro de orden 3 (order_bandpass), se calculan los coeficientes del filtro y se aplica sobre la señal data usando signal.filtfilt, lo cual elimina desfasajes al filtrar en ambas direcciones, resultando en una señal contenida en el rango de frecuencias deseado.
 
 #### Aplicaciones y Beneficios del Diseño
 
@@ -304,6 +310,7 @@ high_stop = stop_high / nyquist
 b_bandstop, a_bandstop = signal.butter(order_bandstop, [low_stop, high_stop], btype='bandstop')
 filtered_bandstop_data = signal.filtfilt(b_bandstop, a_bandstop, filtered_data)
 ```
+Este código define y aplica un filtro rechaza banda Butterworth para eliminar frecuencias no deseadas entre 50 y 60 Hz de una señal, como las que puede introducir el ruido eléctrico. Se establecen los límites de frecuencia (stop_low y stop_high) y se ajustan al rango de Nyquist. Luego, se configura el filtro de orden 5 (order_bandstop), y se aplica usando signal.filtfilt, que filtra la señal filtered_data hacia adelante y hacia atrás para evitar desfasajes, obteniendo una señal sin componentes en el rango especificado.
 
 ##### Aplicaciones y Beneficios del Diseño
 
@@ -352,6 +359,24 @@ La HRV mide la variabilidad en el tiempo entre latidos consecutivos (intervalos 
 
 Este equilibrio es favorable para la salud cardiovascular y permite que el organismo reaccione de manera óptima a situaciones de estrés, cambios en el entorno y otras demandas fisiológicas. Por lo tanto, un monitoreo adecuado de los picos R y de los intervalos R-R es esencial para evaluar el estado del sistema nervioso autónomo y de la salud cardiovascular en general.
 
+#DETECCION DE INTERVALOS R-R
+
+distance = int(0.6 * fs)  #Distancia mínima entre picos (600 ms aprox.)
+peaks, _ = find_peaks(filtered_bandstop_data, distance=distance, height=0.5)  # heigh: amplitud
+
+
+```python
+# Calcular los intervalos R-R
+intervalos_RR = np.diff(peaks) / fs  
+num_picos = len(peaks)
+num_intervalos = len(intervalos_RR)
+
+
+tiempo_RR = np.cumsum(intervalos_RR)  # Tiempo acumulado de cada intervalo R-R
+```
+
+Este fragmento de código calcula los intervalos R-R de una señal ECG al medir el tiempo entre picos consecutivos detectados. Para ello, usa np.diff en el arreglo peaks y divide por la frecuencia de muestreo fs, obteniendo así los intervalos en segundos. También cuenta el número de picos y de intervalos R-R para referencias adicionales, y utiliza np.cumsum para calcular el tiempo acumulado de cada intervalo, permitiendo analizar la evolución temporal de la frecuencia cardíaca.
+
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/ESTA.jpg"  width="900" height="300">
 *Figura 5: Señal estadisticos de los R-R. Tomado de : Autoría propia*
 
@@ -384,6 +409,26 @@ La HRV, medida a través de la variabilidad en los intervalos R-R, es un indicad
 
 Un descenso en la HRV puede asociarse con un mayor riesgo de enfermedades cardíacas, problemas en el equilibrio entre los sistemas simpático y parasimpático, y una menor capacidad de adaptación a factores de estrés. Por tanto, monitorear la HRV ayuda en la prevención de enfermedades cardíacas y permite realizar un seguimiento de la salud cardiovascular de manera integral.
 
+Luego podemos apreciar como  se realizo la obtencion de esta grafica mediante el uso de python, 
+
+```python
+#ESTADÍSTICAS DE LOS INTERVALOS R-R
+
+# Calcular estadísticas de los intervalos R-R
+media_RR = np.mean(intervalos_RR)
+mediana_RR = np.median(intervalos_RR)
+desviacion_std_RR = np.std(intervalos_RR)
+
+# Gráfica de los intervalos R-R 
+plt.figure(figsize=(20, 5))
+
+window_size = 5  
+smoothed_intervals = np.convolve(intervalos_RR, np.ones(window_size) / window_size, mode='valid')
+
+
+```
+
+Este código calcula estadísticas básicas (media, mediana y desviación estándar) de los intervalos R-R de una señal ECG, que representan el tiempo entre dos picos cardíacos consecutivos y reflejan la variabilidad del ritmo. Además, aplica un suavizado con una ventana móvil de tamaño 5 para resaltar la tendencia general de los intervalos, eliminando fluctuaciones rápidas. Finalmente, grafica los datos usando un tamaño de figura amplio para visualizar la evolución de estos intervalos de forma clara.
 
 [^1^]:Guía de colocación de electrodos. (s. f.). Neotecnia. https://neotecnia.mx/blogs/noticias/guia-de-colocacion-de-electrodos?srsltid=AfmBOopEYZV3x6zO5EtnVZ28WQZA4e1kedPIHHK8izv-80wiKwPuaQQI
 [^2^]:National Instruments. (s/f). Multifunction Input and Output Devices. https://www.ni.com/pdf/product-flyers/multifunction-io.pdf
