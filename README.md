@@ -184,14 +184,11 @@ La señal cruda registrada presenta todas las características fundamentales que
 
 Para comprender la señal en su estado bruto, es fundamental evaluar sus estadísticas básicas. A continuación, se presentan las métricas más representativas:
 
-- **Media**: 1.9075
-  La media de la señal, o valor promedio, indica la tendencia central de la amplitud. Un valor cercano a cero en ciertas señales puede indicar simetría alrededor del eje horizontal, mientras que en esta señal, una media de 1.9075 sugiere un desplazamiento en la amplitud.
+- **Media**: 1.9075, la media de la señal, o valor promedio, indica la tendencia central de la amplitud. Un valor cercano a cero en ciertas señales puede indicar simetría alrededor del eje horizontal, mientras que en esta señal, una media de 1.9075 sugiere un desplazamiento en la amplitud.
 
-- **Mediana**: 1.8740
-  La mediana representa el valor central de la señal y proporciona información sobre la distribución de los datos. Si la mediana y la media son muy similares, como en este caso, la señal probablemente presenta una distribución aproximadamente simétrica.
+- **Mediana**: 1.8740, la mediana representa el valor central de la señal y proporciona información sobre la distribución de los datos. Si la mediana y la media son muy similares, como en este caso, la señal probablemente presenta una distribución aproximadamente simétrica.
 
-- **Desviación Estándar**: 0.3535
-  La desviación estándar mide la dispersión de los valores de la señal respecto a la media. Un valor bajo sugiere que la señal no presenta grandes fluctuaciones alrededor de la media, mientras que un valor más alto indicaría variabilidad significativa. En este caso, una desviación estándar de 0.3535 implica una dispersión moderada, indicando cierta variabilidad en la señal sin ser extremadamente volátil.
+- **Desviación Estándar**: 0.3535, la desviación estándar mide la dispersión de los valores de la señal respecto a la media. Un valor bajo sugiere que la señal no presenta grandes fluctuaciones alrededor de la media, mientras que un valor más alto indicaría variabilidad significativa. En este caso, una desviación estándar de 0.3535 implica una dispersión moderada, indicando cierta variabilidad en la señal sin ser extremadamente volátil.
 
 ```python
 #ESTADÍSTICAS DE LA SENAL CRUDA
@@ -200,12 +197,47 @@ Para comprender la señal en su estado bruto, es fundamental evaluar sus estadí
 media = np.mean(data)
 mediana = np.median(data)
 desviacion= np.std(data)
-
-# Imprimir estadísticas generales
-print(f"Media de la señal original: {media:.4f}")
-print(f"Mediana de la señal original : {mediana:.4f}")
-print(f"Desviación estándar de la señal original: {desviacion:.4f}")
 ```
+## Pre-procesamineto de la señal
+
+### Filtro pasa-banda 
+#### Diseño de Filtros Utilizados
+
+Para el análisis de la señal, se emplearon filtros específicos que permiten mejorar la calidad de la señal y resaltar las características relevantes. En este caso, se utilizó un **filtro pasa banda de orden 3** con dos conjuntos de frecuencias de corte: uno que va de **5 Hz a 100 Hz** y otro que abarca de **0.5 Hz a 250 Hz**. A continuación, se describen en detalle los parámetros del filtro y la lógica detrás de su elección.
+
+#### Parámetros del Filtro
+
+##### Tipo de Filtro
+- **Filtro**: Pasa Banda
+- **Orden**: 3
+
+##### Frecuencias de Corte
+- **Primer conjunto de frecuencias de corte**:
+  - **-3 dB**: 5 Hz a 100 Hz
+  - **-20 dB**: 0.5 Hz a 250 Hz
+
+#### Diseño del Filtro
+
+1. **Pasa Banda**: Este tipo de filtro se diseñó para permitir el paso de frecuencias en un rango específico (5 Hz a 100 Hz en este caso) y atenuar las frecuencias que quedan fuera de este rango. La elección de un filtro pasa banda es crucial en el análisis de señales biológicas, como el ECG, ya que se busca eliminar ruidos y artefactos fuera del rango de interés. Esto es especialmente relevante en el contexto de la actividad cardíaca, donde las frecuencias de interés se encuentran generalmente en un rango específico.
+
+2. **Orden del Filtro**: El orden del filtro determina la pendiente de atenuación de la respuesta en frecuencia. Un filtro de orden 3 ofrece una transición más pronunciada entre las frecuencias permitidas y las no permitidas en comparación con filtros de menor orden. Esto significa que las frecuencias fuera del rango de paso se atenuarán de manera más efectiva, lo que ayuda a mantener la integridad de la señal de interés.
+
+3. **Frecuencias de Corte**:
+   - **-3 dB (5 Hz a 100 Hz)**: Este rango es esencial para el análisis de señales cardíacas, ya que abarca la mayoría de las componentes de la frecuencia cardíaca normal. En este rango, se conservan las características importantes del ECG, incluidas las oscilaciones asociadas con los ciclos cardíacos.
+   - **-20 dB (0.5 Hz a 250 Hz)**: Este rango permite incluir oscilaciones de baja frecuencia que pueden ser relevantes para ciertas patologías o fenómenos fisiológicos. La elección de 0.5 Hz asegura que se capturen eventos de interés que pueden estar relacionados con ritmos cardíacos anormales o variaciones fisiológicas.
+
+#### Aplicaciones y Beneficios del Diseño
+
+El diseño de este filtro proporciona múltiples beneficios:
+
+- **Preservación de Información Crítica**: Al centrarse en las frecuencias de interés, el filtro garantiza que la información crucial relacionada con la actividad cardíaca se conserve durante el procesamiento. Las componentes de frecuencia en el rango de 5 Hz a 100 Hz son particularmente relevantes para identificar patrones cardíacos y posibles anomalías.
+
+- **Reducción de Ruido**: Este filtro es eficaz para eliminar ruidos de baja frecuencia (como interferencias electromagnéticas) y también atenuar componentes de alta frecuencia que podrían distorsionar la señal de ECG. Este proceso de limpieza es esencial para garantizar que el análisis posterior se base en datos fiables.
+
+- **Mejora de la Calidad de la Señal**: Al aplicar un filtro de orden 3, se logra una mayor atenuación de las frecuencias no deseadas, lo que mejora la calidad general de la señal procesada. Esto es crucial para realizar análisis precisos y significativos, ya que una señal limpia facilita la identificación de características relevantes.
+
+- **Flexibilidad en el Análisis**: La implementación de dos conjuntos de frecuencias de corte permite una mayor flexibilidad en el análisis. Dependiendo del enfoque del estudio, se puede optar por un análisis más detallado (5 Hz a 100 Hz) o uno más amplio (0.5 Hz a 250 Hz), adaptándose así a las necesidades específicas de cada análisis.
+
 
 [^1^]:Guía de colocación de electrodos. (s. f.). Neotecnia. https://neotecnia.mx/blogs/noticias/guia-de-colocacion-de-electrodos?srsltid=AfmBOopEYZV3x6zO5EtnVZ28WQZA4e1kedPIHHK8izv-80wiKwPuaQQI
 [^2^]:National Instruments. (s/f). Multifunction Input and Output Devices. https://www.ni.com/pdf/product-flyers/multifunction-io.pdf
