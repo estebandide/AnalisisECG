@@ -218,60 +218,6 @@ Para el análisis de la señal, se emplearon filtros específicos que permiten m
 
 #### Diseño del Filtro
 
-# Diseño de Filtro Pasa Banda
-
-filtro_pasa_banda = """
-Diseñar un filtro pasa banda con:
-- Atenuación de -3 dB de atenuación en Ω0 = 50 ± 5 Hz, 100 ± 4 Hz.
-- f1 = 0.05 Hz
-- f2 = 250 Hz
-- fc = 5 Hz
-- fu = 250 Hz
-
-Con:
--20 dB en 0.15 Ω0, 0.25 Ω0
-"""
-
-# Conversiones
-conversiones = """
-Ω1 = 2 * π * 0.5 Hz = 3.1415 rad/s
-Ω2 = 2 * π * 250 Hz = 1570.79 rad/s
-Ωc = 2 * π * 5 Hz = 31.41 rad/s
-Ωu = 2 * π * 100 Hz = 628.318 rad/s
-"""
-
-# Cálculo de n y Q
-calculo_n_y_q = """
-Cálculo de n:
-
-n = log10(1 / sqrt(2)) / log10(Ω1 / Ω2) = 1.91
-
-Otro cálculo de n:
-
-n = log10(1 / sqrt(2)) / log10(2.610 / 10) = 1.861
-"""
-
-# Valor de alpha
-valor_alpha = """
-Cálculo de α:
-
-α = Ω0 / ΔΩ = 2.610
-"""
-
-# Filtro pasa bajo normalizado
-filtro_pasa_bajo = """
-Diseño de un filtro pasa bajo normalizado con α = 2.610 rad/s:
-
-n = log10(1 / 0.707) / log10(1 / 2.610)
-"""
-
-# Imprimir los resultados formateados
-print(filtro_pasa_banda)
-print(conversiones)
-print(calculo_n_y_q)
-print(valor_alpha)
-print(filtro_pasa_bajo)
-
 ##### Pasa Banda
 Este tipo de filtro se diseñó para permitir el paso de frecuencias en un rango específico (5 Hz a 100 Hz en este caso) y atenuar las frecuencias que quedan fuera de este rango. La elección de un filtro pasa banda es crucial en el análisis de señales biológicas, como el ECG, ya que se busca eliminar ruidos y artefactos fuera del rango de interés. Esto es especialmente relevante en el contexto de la actividad cardíaca, donde las frecuencias de interés se encuentran generalmente en un rango específico.
 
@@ -309,6 +255,56 @@ El diseño de este filtro proporciona múltiples beneficios:
 - **Mejora de la Calidad de la Señal**: Al aplicar un filtro de orden 3, se logra una mayor atenuación de las frecuencias no deseadas, lo que mejora la calidad general de la señal procesada. Esto es crucial para realizar análisis precisos y significativos, ya que una señal limpia facilita la identificación de características relevantes.
 
 - **Flexibilidad en el Análisis**: La implementación de dos conjuntos de frecuencias de corte permite una mayor flexibilidad en el análisis. Dependiendo del enfoque del estudio, se puede optar por un análisis más detallado (5 Hz a 100 Hz) o uno más amplio (0.5 Hz a 250 Hz), adaptándose así a las necesidades específicas de cada análisis.
+
+### Diseño de Filtros Utilizado
+
+En el análisis de señales, se utilizó un **filtro rechaza banda de orden 3** con frecuencias de corte específicas para eliminar interferencias en un rango particular. Este tipo de filtro es esencial para asegurar la calidad de la señal de interés, minimizando la influencia de ruidos y artefactos. A continuación, se describen en detalle los parámetros del filtro y la razón detrás de su elección.
+
+#### Parámetros del Filtro
+
+##### Tipo de Filtro
+- **Filtro**: Rechaza Banda
+- **Orden**: 3
+
+##### Frecuencias de Corte
+- **Primer conjunto de frecuencias de corte**:
+  - **-3 dB**: 50 Hz a 60 Hz
+  - **-20 dB**: 52 Hz a 58 Hz
+
+##### Diseño del Filtro
+
+1. **Rechaza Banda**: Este tipo de filtro se diseñó para atenuar las frecuencias en un rango específico (50 Hz a 60 Hz) mientras permite el paso de las frecuencias que se encuentran por debajo y por encima de este rango. Este enfoque es crítico en el análisis de señales biológicas, donde ciertas frecuencias pueden introducir ruido significativo.
+
+2. **Orden del Filtro**: Un filtro de orden 3 ofrece una transición más pronunciada en la respuesta en frecuencia, lo que significa que las frecuencias cercanas al rango de rechazo se atenuarán de manera efectiva. Esto es fundamental para minimizar el impacto de las interferencias en las frecuencias que se desean conservar.
+
+3. **Frecuencias de Corte**:
+   - **-3 dB (50 Hz a 60 Hz)**: Este rango está diseñado para eliminar componentes no deseadas que pueden interferir con la señal de interés. Muchas veces, las interferencias pueden provenir de fuentes eléctricas o equipos cercanos que operan en este rango, por lo que su eliminación es esencial para obtener una señal limpia.
+   - **-20 dB (52 Hz a 58 Hz)**: Esta subbanda más estrecha permite un rechazo aún más fuerte en las frecuencias cercanas al rango de interés. El objetivo es eliminar ruidos que podrían ser críticos y que pueden distorsionar la interpretación de los datos, particularmente en aplicaciones donde la precisión es fundamental.
+     
+```python
+# Parámetros para el filtro de rechaza banda 
+stop_low = 50.0
+stop_high = 60.0
+order_bandstop = 5  # Orden del filtro rechaza banda
+low_stop = stop_low / nyquist
+high_stop = stop_high / nyquist
+
+# Filtro rechaza banda Butterworth
+b_bandstop, a_bandstop = signal.butter(order_bandstop, [low_stop, high_stop], btype='bandstop')
+filtered_bandstop_data = signal.filtfilt(b_bandstop, a_bandstop, filtered_data)
+```
+
+##### Aplicaciones y Beneficios del Diseño
+
+La implementación de este filtro rechaza banda aporta múltiples beneficios:
+
+- **Eliminación de Interferencias**: Al enfocarse en un rango específico de frecuencias, este filtro es eficaz para eliminar ruidos que pueden ser introducidos por dispositivos electrónicos, como la red eléctrica, que a menudo generan componentes en el rango de 50 Hz a 60 Hz. Esto es particularmente relevante en entornos donde se realizan estudios biomédicos.
+
+- **Preservación de Señales de Interés**: Al rechazar únicamente las frecuencias no deseadas, el filtro permite que las componentes relevantes de la señal pasen sin alteraciones significativas. Esto es esencial para el análisis de datos donde se requiere claridad y precisión.
+
+- **Mejora de la Calidad de la Señal**: Con un filtro de orden 3, la atenuación de las frecuencias en el rango de rechazo es más efectiva. Esto significa que la calidad general de la señal se mejora, facilitando análisis posteriores más precisos y significativos.
+
+- **Flexibilidad en el Análisis**: La elección de frecuencias de corte específicas permite que el filtro se adapte a diferentes contextos y condiciones de ruido, brindando la flexibilidad necesaria para realizar análisis bajo diversas condiciones experimentales.
 
 
 [^1^]:Guía de colocación de electrodos. (s. f.). Neotecnia. https://neotecnia.mx/blogs/noticias/guia-de-colocacion-de-electrodos?srsltid=AfmBOopEYZV3x6zO5EtnVZ28WQZA4e1kedPIHHK8izv-80wiKwPuaQQI
