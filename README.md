@@ -2,6 +2,12 @@
 ## Descripción 
 Este proyecto realiza un análisis detallado de una señal fisiológica (ECG) obtenida del corazón durante una serie de latidos. Incluye la visualización de la señal, filtrado para eliminar el ruido fuera del rango útil, segmentación de la señal en ventanas alrededor de los intervalos R-R detectados, y un análisis de la señal mediante la transformada wavelet. Además, se calcula la variabilidad de frecuencia cardíaca (HVR) basada en los intervalos R-R de cada segmento para evaluar la variabilidad entre latidos, especialmente cuando el ritmo cardíaco se encuentra cerca de la inestabilidad.
 
+
+<img src="https://github.com/estebandide/AnalisisECG/blob/main/LABVIEW.jpg"  width="600" height="500">
+
+*Figura 1: Esquema LabVIEW. Tomado de autoria propia*
+
+
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/Gr%C3%A1fico%20Diagrama%20de%20Flujo%20Din%C3%A1mico%20Celeste.png"  width="600" height="500">
 
 *Figura 1: Data Acquisition System. Tomado de autoria propia*
@@ -99,6 +105,8 @@ La Transformada Wavelet se usa en:
 ## Adquisición de la señal ECG
 Para la captura de la señal ECG, se seleccionó un sujeto de manera anónima, quien autorizó el uso de su señal bajo condiciones de confidencialidad. La adquisición de la señal se realizó mediante una tarjeta DAQ que es un dispositivo utilizado para medir señales físicas y convertirlas en datos digitales que puedan ser procesado, siguiendo una guía específica para la colocación de los electrodos. La ubicación de los electrodos se basó en las recomendaciones establecidas en [^1^], asegurando una correcta captación de la actividad eléctrica cardíaca. Se incluyó una explicación detallada en cada sección para clarificar los procedimientos técnicos y metodológicos empleados en cada etapa del proceso de adquisición.
 
+
+
 <img src="https://github.com/lavaltt/Analisis_de_senales_EMG/blob/main/daq.jpg?raw=true"  width="400" height="300">
 
 *Figura 2: Data Acquisition System. Tomado de : [^2^]*
@@ -123,6 +131,8 @@ Inicialmente, se conectaron los electrodos en la posición indicada en la Figura
 
 
 https://github.com/user-attachments/assets/a102acf0-6d91-4223-a113-5afae681d795
+
+
 
 ### DAQ y Python 
 La DAQ fue enlazada por medio de código a python, de manera que pudiera visualizarse la captura de la señal en tiempo real y los datos fueran guardados en cualquier formato deseado. El código configura los parametros y la tarea de adquisicion, a su vez que estructura la graficación en vivo de la señal adquirida. (Código adjunto en el proyecto).
@@ -308,6 +318,71 @@ La implementación de este filtro rechaza banda aporta múltiples beneficios:
 
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/FILTRO.jpg"  width="900" height="300">
 *Figura 5: Señal filtrada verde (Pasa banda), señal filtrada azul (rechaza banda). Tomado de : Autoría propia*
+
+## Analsiis de HRV
+
+La variabilidad de la frecuencia cardíaca (HRV) es una medida de las variaciones en el intervalo de tiempo entre latidos consecutivos del corazón (intervalos R-R). Es un indicador importante de la actividad del sistema nervioso autónomo (SNA), que regula funciones automáticas del cuerpo, y se utiliza comúnmente en el análisis de la salud cardíaca y el estrés. Una mayor HRV generalmente indica una buena adaptación del sistema cardiovascular y una alta resiliencia, mientras que una HRV baja puede estar asociada con estrés.
+
+<img src="https://github.com/estebandide/AnalisisECG/blob/main/HRV.jpg"  width="900" height="300">
+*Figura 5: Señal medicion de los R-R. Tomado de : Autoría propia*
+
+### Gráfica del ECG Filtrado con Picos R Detectados
+
+#### Identificación de los Picos R
+
+En esta gráfica, la señal azul representa el ECG filtrado, y las marcas rojas indican los picos R identificados. Estos picos son puntos clave en la señal de ECG que corresponden a los momentos de contracción ventricular en cada latido, es decir, cuando el corazón se contrae para bombear sangre. Detectar con precisión los picos R es fundamental para calcular los intervalos R-R, que son los tiempos entre latidos consecutivos y sirven como base para medir la HRV.
+
+La consistencia de los picos R en la gráfica indica un ritmo cardíaco regular, lo cual es un buen signo en términos de estabilidad. Sin embargo, es normal observar pequeñas variaciones en la altura y en la posición de cada pico R, lo que puede reflejar la influencia de factores como la respiración, el estrés o el estado de reposo o actividad física de la persona. Estas variaciones contribuyen a la HRV y son importantes para comprender cómo el sistema nervioso autónomo regula el ritmo cardíaco.
+
+#### Análisis Temporal
+
+- **Eje Horizontal:** Representa el tiempo en segundos, permitiendo observar cómo varía la señal ECG a lo largo del tiempo.
+- **Eje Vertical:** Muestra la amplitud de la señal ECG en milivoltios (mV), que indica la fuerza de los impulsos eléctricos durante cada latido.
+
+Al observar el trazado de ECG, los picos R deben estar bastante regulares en el tiempo para reflejar un ritmo cardíaco normal. En este análisis, la separación entre picos R es consistente, aunque existen algunas variaciones en la altura y en el intervalo entre ellos. Esto refleja una HRV positiva, que es un indicador de que el corazón responde a las demandas del cuerpo.
+
+#### Observación de Variaciones en los Picos R
+
+Se ha identificado una variación más grande en el intervalo entre picos R alrededor de los 150-160 segundos. Esta variación podría deberse a un cambio en la actividad del sistema nervioso autónomo, una respuesta al entorno, o incluso a una ligera arritmia. Identificar estas variaciones ayuda a diferenciar entre fluctuaciones normales y posibles anomalías que podrían requerir un análisis adicional, especialmente si se observan en otras partes del ECG o si se acompañan de síntomas clínicos.
+
+#### Importancia para la HRV
+
+La HRV mide la variabilidad en el tiempo entre latidos consecutivos (intervalos R-R) y es un reflejo del equilibrio entre los sistemas nerviosos simpático y parasimpático, que regulan el ritmo cardíaco. Un patrón de picos R con una variabilidad adecuada (sin ser excesiva) sugiere que el sistema nervioso autónomo es flexible y responde bien a las demandas del cuerpo. 
+
+Este equilibrio es favorable para la salud cardiovascular y permite que el organismo reaccione de manera óptima a situaciones de estrés, cambios en el entorno y otras demandas fisiológicas. Por lo tanto, un monitoreo adecuado de los picos R y de los intervalos R-R es esencial para evaluar el estado del sistema nervioso autónomo y de la salud cardiovascular en general.
+
+<img src="https://github.com/estebandide/AnalisisECG/blob/main/ESTA.jpg"  width="900" height="300">
+*Figura 5: Señal estadisticos de los R-R. Tomado de : Autoría propia*
+
+### Gráfica de Duración de los Intervalos R-R
+
+La segunda gráfica analiza la duración de los intervalos R-R, es decir, los tiempos entre latidos sucesivos. Esta gráfica es crucial para entender la variabilidad de la frecuencia cardíaca (HRV), ya que permite observar cómo fluctúa el tiempo entre cada latido.
+
+#### Significado de la Media y Desviación Estándar
+
+- **Media de los Intervalos R-R:** La media calculada es de 0.9767 segundos, lo que representa la duración promedio entre latidos en un estado de reposo. Este valor equivale a una frecuencia cardíaca promedio de aproximadamente 61 latidos por minuto, calculada como \( 60 / \text{media} \), es decir, \( 60 / 0.9767 \approx 61 \). Esta frecuencia cardíaca es típica en un estado de reposo y puede considerarse un indicio de una buena salud cardíaca, ya que sugiere que el corazón está funcionando a un ritmo controlado.
+
+- **Desviación Estándar de los Intervalos R-R:** La desviación estándar obtenida es de 0.1452 segundos, lo cual refleja la variabilidad en los intervalos R-R. Una desviación estándar mayor indica una mayor HRV, lo que es positivo en términos de salud. Una HRV elevada muestra que el sistema nervioso autónomo es flexible y puede adaptarse a las necesidades cambiantes del cuerpo. Por el contrario, una HRV baja puede indicar un sistema autónomo menos adaptable, lo cual podría relacionarse con un mayor riesgo de problemas cardíacos y con una salud general comprometida.
+
+#### Interpretación de la Gráfica
+
+La gráfica de los intervalos R-R muestra las variaciones en la duración de los intervalos R-R. 
+
+- **Puntos Morados:** Representan los valores individuales de los intervalos R-R suavizados, lo cual permite observar las variaciones sin el ruido de la señal original.
+- **Líneas de Color:** Las líneas de color en la gráfica indican la media (en rojo) y las bandas de una desviación estándar (en verde y naranja). Las bandas ayudan a establecer un rango normal dentro del cual suelen caer los intervalos R-R en condiciones de reposo.
+
+Los intervalos que se encuentran fuera de estas bandas pueden considerarse desviaciones significativas del ritmo promedio. Estas desviaciones no necesariamente indican un problema, ya que el corazón responde a diversos factores fisiológicos y ambientales, como el estrés, el ejercicio o incluso el estado emocional. Sin embargo, intervalos que frecuentemente caen fuera de estas bandas podrían requerir un análisis adicional, especialmente si están acompañados de síntomas o se observan en patrones repetidos.
+
+#### Observación de Picos en los Intervalos R-R
+
+En la gráfica, se observan picos significativos en la duración de los intervalos R-R alrededor del índice 50 y después del índice 250. Estos picos podrían ser causados por artefactos en la señal, errores en la detección de los picos R, o cambios en la actividad del sistema nervioso autónomo. Identificar y analizar estos picos es útil para distinguir entre variaciones fisiológicas normales y posibles irregularidades en el ritmo cardíaco.
+
+#### HRV y Salud Cardiovascular
+
+La HRV, medida a través de la variabilidad en los intervalos R-R, es un indicador clave de la salud del sistema cardiovascular. Un corazón con buena HRV muestra una mayor flexibilidad y adaptabilidad del sistema nervioso autónomo, lo cual es importante para afrontar las demandas del organismo en diferentes situaciones, desde la relajación hasta el ejercicio intenso. 
+
+Un descenso en la HRV puede asociarse con un mayor riesgo de enfermedades cardíacas, problemas en el equilibrio entre los sistemas simpático y parasimpático, y una menor capacidad de adaptación a factores de estrés. Por tanto, monitorear la HRV ayuda en la prevención de enfermedades cardíacas y permite realizar un seguimiento de la salud cardiovascular de manera integral.
+
 
 [^1^]:Guía de colocación de electrodos. (s. f.). Neotecnia. https://neotecnia.mx/blogs/noticias/guia-de-colocacion-de-electrodos?srsltid=AfmBOopEYZV3x6zO5EtnVZ28WQZA4e1kedPIHHK8izv-80wiKwPuaQQI
 [^2^]:National Instruments. (s/f). Multifunction Input and Output Devices. https://www.ni.com/pdf/product-flyers/multifunction-io.pdf
