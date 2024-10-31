@@ -373,7 +373,7 @@ La implementación de este filtro rechaza banda aporta múltiples beneficios:
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/FILTRO.jpg"  width="900" height="300">
 *Figura 5: Señal filtrada verde (Pasa banda), señal filtrada azul (rechaza banda). Tomado de : Autoría propia*
 
-## Analsis de HRV
+## Análisis de HRV
 
 La variabilidad de la frecuencia cardíaca (HRV) es una medida de las variaciones en el intervalo de tiempo entre latidos consecutivos del corazón (intervalos R-R). Es un indicador importante de la actividad del sistema nervioso autónomo (SNA), que regula funciones automáticas del cuerpo, y se utiliza comúnmente en el análisis de la salud cardíaca y el estrés. Una mayor HRV generalmente indica una buena adaptación del sistema cardiovascular y una alta resiliencia, mientras que una HRV baja puede estar asociada con estrés.
 
