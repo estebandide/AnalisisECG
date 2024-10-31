@@ -218,13 +218,104 @@ Para el análisis de la señal, se emplearon filtros específicos que permiten m
 
 #### Diseño del Filtro
 
-1. **Pasa Banda**: Este tipo de filtro se diseñó para permitir el paso de frecuencias en un rango específico (5 Hz a 100 Hz en este caso) y atenuar las frecuencias que quedan fuera de este rango. La elección de un filtro pasa banda es crucial en el análisis de señales biológicas, como el ECG, ya que se busca eliminar ruidos y artefactos fuera del rango de interés. Esto es especialmente relevante en el contexto de la actividad cardíaca, donde las frecuencias de interés se encuentran generalmente en un rango específico.
+# Diseño de Filtro Pasa Banda
 
-2. **Orden del Filtro**: El orden del filtro determina la pendiente de atenuación de la respuesta en frecuencia. Un filtro de orden 3 ofrece una transición más pronunciada entre las frecuencias permitidas y las no permitidas en comparación con filtros de menor orden. Esto significa que las frecuencias fuera del rango de paso se atenuarán de manera más efectiva, lo que ayuda a mantener la integridad de la señal de interés.
+## Diseñar un filtro pasa banda con:
 
-3. **Frecuencias de Corte**:
+- Atenuación de -3 dB en 👦\Omega_0 = 50 \pm 5👦 Hz, 👦100 \pm 4👦 Hz.
+- 👦f_1 = 0.05👦 Hz
+- 👦f_2 = 250👦 Hz
+- 👦f_c = 5👦 Hz
+- 👦f_u = 250👦 Hz
+
+Con:
+\[
+-20 \, \text{dB en } \, 0.15 \, \Omega_0, 0.25 \, \Omega_0
+\]
+
+## Conversiones
+
+\[
+\Omega_1 = 2 \pi \cdot 0.5 \, \text{Hz} = 3.1415 \, \text{rad/s}
+\]
+\[
+\Omega_2 = 2 \pi \cdot 250 \, \text{Hz} = 1570.79 \, \text{rad/s}
+\]
+\[
+\Omega_c = 2 \pi \cdot 5 \, \text{Hz} = 31.41 \, \text{rad/s}
+\]
+\[
+\Omega_u = 2 \pi \cdot 100 \, \text{Hz} = 628.318 \, \text{rad/s}
+\]
+
+## Cálculo de 👦Q👦 y 👦n👦
+
+\[
+n = \frac{\log_{10} \frac{1}{\sqrt{2}}}{\log_{10} \left(\frac{\Omega_1}{\Omega_2}\right)} = 1.91
+\]
+\[
+\alpha = \frac{1}{Q} \quad \text{donde} \quad Q = \frac{\Omega_0}{\Delta \Omega}
+\]
+\[
+\Delta \Omega = \Omega_2 - \Omega_1
+\]
+\[
+\Omega_0 = \sqrt{\Omega_1 \cdot \Omega_2} = \sqrt{3.1415 \cdot 1570.79} = 70.35
+\]
+\[
+\alpha = \frac{\Omega_0}{\Delta \Omega} = \frac{70.35}{1570.79 - 3.1415} = 0.045
+\]
+
+## Gráficos de Respuesta
+
+| 👦\Omega👦 | Magnitud (dB) |
+|------------|---------------|
+| 👦\Omega_1👦 | -3 |
+| 👦\Omega_0👦 | 0 |
+| 👦\Omega_2👦 | -3 |
+
+![Gráfico de Bode](bode_plot_example.png)
+
+## Filtro Pasa Bajo Normalizado con 👦\alpha = 2.610 \, \text{rad/s}👦
+
+\[
+n = \frac{\log_{10} \left(\frac{1}{0.707}\right)}{\log_{10} \left(\frac{1}{2.610}\right)} = 1.861
+\]
+\[
+\Omega_1 = 2.610, \quad \Omega_2 = 2.610
+\]
+
+| 👦\Omega👦 | Magnitud (dB) |
+|------------|---------------|
+| 👦\Omega_1👦 | -3 |
+| 👦\Omega_0👦 | 0 |
+| 👦\Omega_2👦 | -3 |
+
+##### Pasa Banda
+Este tipo de filtro se diseñó para permitir el paso de frecuencias en un rango específico (5 Hz a 100 Hz en este caso) y atenuar las frecuencias que quedan fuera de este rango. La elección de un filtro pasa banda es crucial en el análisis de señales biológicas, como el ECG, ya que se busca eliminar ruidos y artefactos fuera del rango de interés. Esto es especialmente relevante en el contexto de la actividad cardíaca, donde las frecuencias de interés se encuentran generalmente en un rango específico.
+
+##### Orden del Filtro
+El orden del filtro determina la pendiente de atenuación de la respuesta en frecuencia. Un filtro de orden 3 ofrece una transición más pronunciada entre las frecuencias permitidas y las no permitidas en comparación con filtros de menor orden. Esto significa que las frecuencias fuera del rango de paso se atenuarán de manera más efectiva, lo que ayuda a mantener la integridad de la señal de interés.
+
+##### Frecuencias de Corte
    - **-3 dB (5 Hz a 100 Hz)**: Este rango es esencial para el análisis de señales cardíacas, ya que abarca la mayoría de las componentes de la frecuencia cardíaca normal. En este rango, se conservan las características importantes del ECG, incluidas las oscilaciones asociadas con los ciclos cardíacos.
    - **-20 dB (0.5 Hz a 250 Hz)**: Este rango permite incluir oscilaciones de baja frecuencia que pueden ser relevantes para ciertas patologías o fenómenos fisiológicos. La elección de 0.5 Hz asegura que se capturen eventos de interés que pueden estar relacionados con ritmos cardíacos anormales o variaciones fisiológicas.
+
+```python
+# Parámetros del filtro pasa banda
+lc = 5.0    # Frecuencia de corte baja para el pasa banda
+hc = 100.0   # Frecuencia de corte alta para el pasa banda
+order_bandpass = 3  # Orden del filtro pasa banda
+
+# Normalización para el filtro pasa banda
+nyquist = 0.5 * fs
+low = lc / nyquist
+high = hc / nyquist
+
+# Filtro pasa banda Butterworth
+b_bandpass, a_bandpass = signal.butter(order_bandpass, [low, high], btype='band')
+filtered_data = signal.filtfilt(b_bandpass, a_bandpass, data)
+```
 
 #### Aplicaciones y Beneficios del Diseño
 
