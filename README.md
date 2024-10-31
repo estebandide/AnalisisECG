@@ -251,7 +251,7 @@ Este código calcula estadísticas básicas de la señal cruda data, obteniendo 
 ## Pre-procesamineto de la señal
 
 ### Filtro pasa-banda 
-#### Diseño de Filtros Utilizados
+#### Diseño de Filtro Utilizado
 
 Para el análisis de la señal, se emplearon filtros específicos que permiten mejorar la calidad de la señal y resaltar las características relevantes. En este caso, se utilizó un **filtro pasa banda de orden 3** con dos conjuntos de frecuencias de corte: uno que va de **5 Hz a 100 Hz** y otro que abarca de **0.5 Hz a 250 Hz**. A continuación, se describen en detalle los parámetros del filtro y la lógica detrás de su elección.
 
@@ -267,6 +267,11 @@ Para el análisis de la señal, se emplearon filtros específicos que permiten m
   - **-20 dB**: 0.5 Hz a 250 Hz
 
 #### Diseño del Filtro
+Calculos a mano:
+
+![WhatsApp Image 2024-10-29 at 21 25 22_0f731280](https://github.com/user-attachments/assets/2f8c6437-c78b-478b-bcc3-d675e74961ad)
+
+
 
 ##### Pasa Banda
 Este tipo de filtro se diseñó para permitir el paso de frecuencias en un rango específico (5 Hz a 100 Hz en este caso) y atenuar las frecuencias que quedan fuera de este rango. La elección de un filtro pasa banda es crucial en el análisis de señales biológicas, como el ECG, ya que se busca eliminar ruidos y artefactos fuera del rango de interés. Esto es especialmente relevante en el contexto de la actividad cardíaca, donde las frecuencias de interés se encuentran generalmente en un rango específico.
@@ -308,7 +313,7 @@ El diseño de este filtro proporciona múltiples beneficios:
 
 - **Flexibilidad en el Análisis**: La implementación de dos conjuntos de frecuencias de corte permite una mayor flexibilidad en el análisis. Dependiendo del enfoque del estudio, se puede optar por un análisis más detallado (5 Hz a 100 Hz) o uno más amplio (0.5 Hz a 250 Hz), adaptándose así a las necesidades específicas de cada análisis.
 
-### Diseño de Filtros Utilizado
+### Diseño de Filtro Utilizado
 
 En el análisis de señales, se utilizó un **filtro rechaza banda de orden 3** con frecuencias de corte específicas para eliminar interferencias en un rango particular. Este tipo de filtro es esencial para asegurar la calidad de la señal de interés, minimizando la influencia de ruidos y artefactos. A continuación, se describen en detalle los parámetros del filtro y la razón detrás de su elección.
 
@@ -324,12 +329,15 @@ En el análisis de señales, se utilizó un **filtro rechaza banda de orden 3** 
   - **-20 dB**: 52 Hz a 58 Hz
 
 ##### Diseño del Filtro
+Calculos a mano:
+![WhatsApp Image 2024-10-29 at 21 22 04_2191f5dd](https://github.com/user-attachments/assets/bd27eb62-1a47-4433-beb1-3792912b60d5)
 
-1. **Rechaza Banda**: Este tipo de filtro se diseñó para atenuar las frecuencias en un rango específico (50 Hz a 60 Hz) mientras permite el paso de las frecuencias que se encuentran por debajo y por encima de este rango. Este enfoque es crítico en el análisis de señales biológicas, donde ciertas frecuencias pueden introducir ruido significativo.
 
-2. **Orden del Filtro**: Un filtro de orden 3 ofrece una transición más pronunciada en la respuesta en frecuencia, lo que significa que las frecuencias cercanas al rango de rechazo se atenuarán de manera efectiva. Esto es fundamental para minimizar el impacto de las interferencias en las frecuencias que se desean conservar.
+**Rechaza Banda**: Este tipo de filtro se diseñó para atenuar las frecuencias en un rango específico (50 Hz a 60 Hz) mientras permite el paso de las frecuencias que se encuentran por debajo y por encima de este rango. Este enfoque es crítico en el análisis de señales biológicas, donde ciertas frecuencias pueden introducir ruido significativo.
 
-3. **Frecuencias de Corte**:
+**Orden del Filtro**: Un filtro de orden 3 ofrece una transición más pronunciada en la respuesta en frecuencia, lo que significa que las frecuencias cercanas al rango de rechazo se atenuarán de manera efectiva. Esto es fundamental para minimizar el impacto de las interferencias en las frecuencias que se desean conservar.
+
+**Frecuencias de Corte**:
    - **-3 dB (50 Hz a 60 Hz)**: Este rango está diseñado para eliminar componentes no deseadas que pueden interferir con la señal de interés. Muchas veces, las interferencias pueden provenir de fuentes eléctricas o equipos cercanos que operan en este rango, por lo que su eliminación es esencial para obtener una señal limpia.
    - **-20 dB (52 Hz a 58 Hz)**: Esta subbanda más estrecha permite un rechazo aún más fuerte en las frecuencias cercanas al rango de interés. El objetivo es eliminar ruidos que podrían ser críticos y que pueden distorsionar la interpretación de los datos, particularmente en aplicaciones donde la precisión es fundamental.
      
@@ -362,7 +370,7 @@ La implementación de este filtro rechaza banda aporta múltiples beneficios:
 <img src="https://github.com/estebandide/AnalisisECG/blob/main/FILTRO.jpg"  width="900" height="300">
 *Figura 5: Señal filtrada verde (Pasa banda), señal filtrada azul (rechaza banda). Tomado de : Autoría propia*
 
-## Analsiis de HRV
+## Analsis de HRV
 
 La variabilidad de la frecuencia cardíaca (HRV) es una medida de las variaciones en el intervalo de tiempo entre latidos consecutivos del corazón (intervalos R-R). Es un indicador importante de la actividad del sistema nervioso autónomo (SNA), que regula funciones automáticas del cuerpo, y se utiliza comúnmente en el análisis de la salud cardíaca y el estrés. Una mayor HRV generalmente indica una buena adaptación del sistema cardiovascular y una alta resiliencia, mientras que una HRV baja puede estar asociada con estrés.
 
